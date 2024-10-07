@@ -8,6 +8,7 @@ import javax.swing.border.EmptyBorder;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import java.util.Objects;
 import javax.swing.JTextField;
 import javax.swing.JLabel;
 import javax.swing.ImageIcon;
@@ -66,7 +67,7 @@ public class Main extends JFrame {
 		contentPane.add(btnNewButton_1);
 		
 		JLabel lblNewLabel = new JLabel("");
-		lblNewLabel.setIcon(new ImageIcon(Main.class.getResource("/Ej2/3.png")));
+		//lblNewLabel.setIcon(new ImageIcon(Objects.requireNonNull(Main.class.getResource("/Ej2/3.png"))));
 		lblNewLabel.setBounds(29, 11, 218, 145);
 		contentPane.add(lblNewLabel);
 		
@@ -82,7 +83,7 @@ public class Main extends JFrame {
 		contentPane.add(btnNewButton_2);
 		
 		JLabel lblNewLabel_1 = new JLabel("");
-		lblNewLabel_1.setIcon(new ImageIcon(Main.class.getResource("/Ej2/3.png")));
+	//	lblNewLabel_1.setIcon(new ImageIcon(Objects.requireNonNull(Main.class.getResource("/Ej2/3.png"))));
 		lblNewLabel_1.setBounds(306, 11, 210, 145);
 		contentPane.add(lblNewLabel_1);
 	}
