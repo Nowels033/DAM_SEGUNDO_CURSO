@@ -14,7 +14,7 @@ import javax.swing.JLabel;
 import javax.swing.ImageIcon;
 
 public class Main extends JFrame {
-
+	int a;
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
 
