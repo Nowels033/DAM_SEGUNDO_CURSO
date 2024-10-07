@@ -6,6 +6,7 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.JList;
+import javax.swing.JOptionPane;
 import javax.swing.DefaultListModel;
 import javax.swing.JButton;
 import javax.swing.JLabel;
@@ -71,11 +72,16 @@ public class Tareas extends JFrame {
 		JButton btnEliminar = new JButton("ELIMINAR");
 		btnEliminar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				
 				int seleccionado = list.getSelectedIndex();
-				System.out.println(" "+listModel.getSize()+" "+seleccionado);
-				listModel.remove(seleccionado);
-				System.out.println(" "+listModel.getSize());
+				if(seleccionado != -1) {
+					
+					System.out.println(" "+listModel.getSize()+" "+seleccionado);
+					listModel.remove(seleccionado);
+					//System.out.println(" "+listModel.getSize());
+				}
+				else {
+					JOptionPane.showMessageDialog(null, "No seleccionaste NINGUN elemento de la lista para BORRAR");
+				}
 
 			}
 		});
