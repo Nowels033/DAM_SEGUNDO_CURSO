@@ -1,4 +1,4 @@
-package interfaces_U1_Actividad_2;
+package interfaces_U1_Actividad_2_Gestor_Tareas;
 
 import java.awt.EventQueue;
 
@@ -19,6 +19,11 @@ public class Tareas extends JFrame {
 
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
+	private static int seleccionado;
+	JList list = new JList();
+	
+	static DefaultListModel<String> listModel = new DefaultListModel<String>();
+	
 
 	/**
 	 * Launch the application.
@@ -48,34 +53,57 @@ public class Tareas extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
-		JList list = new JList();
-		DefaultListModel listModel = new DefaultListModel<String>();
-		list.setModel(listModel);
+//		JList list = new JList();
+//		
+//		DefaultListModel<String> listModel = new DefaultListModel<String>();
+//		list.setModel(listModel);
 		//list.add("HOLA");
+		list.setModel(listModel);
 		list.setBounds(37, 42, 354, 136);
 		contentPane.add(list);
 		
 		JButton btnNewButton = new JButton("AÑADIR");
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				listModel.addElement("HOLA");
+				//listModel.addElement("HOLA");
+				
+				Crear dialogo = new Crear();
+				dialogo.setVisible(true);
+				
+				
 				
 			}
 		});
+		
+		
+		
 		btnNewButton.setBounds(25, 227, 89, 23);
 		contentPane.add(btnNewButton);
 		
 		JButton btnModificar = new JButton("MODIFICAR");
+		btnModificar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				 seleccionado = list.getSelectedIndex();
+				if(seleccionado != -1) {
+					
+					Modificar dialogo = new Modificar();
+					dialogo.setVisible(true);
+				}
+				else {
+					JOptionPane.showMessageDialog(null, "No seleccionaste NINGUN elemento de la lista para MODIFICAR");
+				}
+			}
+		});
 		btnModificar.setBounds(124, 227, 103, 23);
 		contentPane.add(btnModificar);
 		
 		JButton btnEliminar = new JButton("ELIMINAR");
 		btnEliminar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				int seleccionado = list.getSelectedIndex();
+				 seleccionado = list.getSelectedIndex();
 				if(seleccionado != -1) {
 					
-					System.out.println(" "+listModel.getSize()+" "+seleccionado);
+					//System.out.println(" "+listModel.getSize()+" "+seleccionado);
 					listModel.remove(seleccionado);
 					//System.out.println(" "+listModel.getSize());
 				}
@@ -103,4 +131,12 @@ public class Tareas extends JFrame {
 		lblNewLabel.setBounds(103, 17, 197, 14);
 		contentPane.add(lblNewLabel);
 	}
+	
+	public static void addList(String texto) {
+		listModel.addElement(texto);
+    }
+	public static void updateList(String texto) {
+		listModel.remove(seleccionado);
+		listModel.add(seleccionado, texto);
+    }
 }
