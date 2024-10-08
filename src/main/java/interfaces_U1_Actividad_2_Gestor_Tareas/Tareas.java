@@ -40,6 +40,7 @@ public class Tareas extends JFrame {
 			}
 		});
 	}
+	
 
 	/**
 	 * Create the frame.
