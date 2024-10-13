@@ -55,7 +55,7 @@ public class Cuestionario_V6 extends JFrame {
 
 		ArrayList<String> respuestas = new ArrayList();
 
-		String pre1 = "Pregunta1", pre2 = "Pregunta2", pre3 = "Pregunta3";
+		String pre1 = "¿QUE NIVEL TIENES DE PROGRAMACION?", pre2 = "¿QUE LENGUAJES SABES?", pre3 = "¿QUIERES SEGUIR ESTUDIANDO?";
 		
 		String[] preguntas = new String[3];
 		preguntas[0]=pre1;
@@ -76,18 +76,18 @@ public class Cuestionario_V6 extends JFrame {
 		lblNewLabel.setBounds(31, 24, 294, 90);
 		panel1.add(lblNewLabel);
 
-		JCheckBox chckbx1 = new JCheckBox("A");
+		JCheckBox chckbx1 = new JCheckBox("Nada");
 
 		buttonGroupP1.add(chckbx1);
 		chckbx1.setBounds(27, 140, 97, 23);
 		panel1.add(chckbx1);
 
-		JCheckBox chckbx2 = new JCheckBox("B");
+		JCheckBox chckbx2 = new JCheckBox("Junior");
 		buttonGroupP1.add(chckbx2);
 		chckbx2.setBounds(27, 172, 97, 23);
 		panel1.add(chckbx2);
 
-		JCheckBox chckbx3 = new JCheckBox("C");
+		JCheckBox chckbx3 = new JCheckBox("Senior");
 		buttonGroupP1.add(chckbx3);
 		chckbx3.setBounds(27, 205, 97, 23);
 		panel1.add(chckbx3);
@@ -108,17 +108,17 @@ public class Cuestionario_V6 extends JFrame {
 		lblNewLabel_1.setBounds(31, 24, 294, 90);
 		panel2.add(lblNewLabel_1);
 
-		JRadioButton chckbx4 = new JRadioButton("A");
+		JRadioButton chckbx4 = new JRadioButton("Python");
 		buttonGroupP2.add(chckbx4);
 		chckbx4.setBounds(27, 140, 97, 23);
 		panel2.add(chckbx4);
 
-		JRadioButton chckbx5 = new JRadioButton("B");
+		JRadioButton chckbx5 = new JRadioButton("Java");
 		buttonGroupP2.add(chckbx5);
 		chckbx5.setBounds(27, 172, 97, 23);
 		panel2.add(chckbx5);
 
-		JRadioButton chckbx6 = new JRadioButton("C");
+		JRadioButton chckbx6 = new JRadioButton("AMBOS");
 		buttonGroupP2.add(chckbx6);
 		chckbx6.setBounds(27, 205, 97, 23);
 		panel2.add(chckbx6);
@@ -141,19 +141,19 @@ public class Cuestionario_V6 extends JFrame {
 		lblNewLabel_2.setBounds(31, 24, 294, 90);
 		panel3.add(lblNewLabel_2);
 
-		JCheckBox chckbx7 = new JCheckBox("A");
+		JCheckBox chckbx7 = new JCheckBox("Sí");
 		buttonGroupP3.add(chckbx7);
 		chckbx7.setBounds(27, 140, 97, 23);
 		panel3.add(chckbx7);
 
-		JCheckBox chckbx8 = new JCheckBox("B");
+		JCheckBox chckbx8 = new JCheckBox("No");
 		buttonGroupP3.add(chckbx8);
 		chckbx8.setBounds(27, 172, 97, 23);
 		panel3.add(chckbx8);
 
-		JCheckBox chckbx9 = new JCheckBox("C");
+		JCheckBox chckbx9 = new JCheckBox("Tengo que pensarlo");
 		buttonGroupP3.add(chckbx9);
-		chckbx9.setBounds(27, 205, 97, 23);
+		chckbx9.setBounds(27, 205, 157, 23);
 		panel3.add(chckbx9);
 
 		JButton btnFin = new JButton("FIN");
