@@ -70,10 +70,10 @@ public class Eventos_V1 extends JFrame {
 		contentPane.add(panel, "panel1");
 		panel.setLayout(null);
 		
-		 String[] columnNames = {"Nombre", "Tipo", "Fecha"};
+		String[] columnNames = {"Nombre", "Tipo", "Fecha"};
 	        
 	       
-	        Object[][] data = {
+	    Object[][] data = {
 	            {"PONER UN 10 A NOEL", "EXAMENES", "TODOS LOS EXAMENES"},
 	          
 	        };
