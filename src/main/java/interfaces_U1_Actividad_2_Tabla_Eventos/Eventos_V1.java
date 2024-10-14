@@ -140,6 +140,7 @@ public class Eventos_V1 extends JFrame {
 		panel2.add(btnOk);
 		
 		JButton btnNewButton = new JButton("Cancelar");
+		
 		btnNewButton.setBounds(397, 141, 89, 55);
 		panel2.add(btnNewButton);
 		
@@ -217,6 +218,11 @@ public class Eventos_V1 extends JFrame {
 				model.addRow(introducir);
 				cardLayout.show(contentPane, "panel1");
 				
+			}
+		});
+		btnNewButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				cardLayout.show(contentPane, "panel1");
 			}
 		});
 		
