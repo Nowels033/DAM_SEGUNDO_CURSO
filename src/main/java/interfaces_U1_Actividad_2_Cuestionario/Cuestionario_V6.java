@@ -73,7 +73,7 @@ public class Cuestionario_V6 extends JFrame {
 
 		JLabel lblNewLabel = new JLabel(pre1);
 		lblNewLabel.setFont(new Font("Sylfaen", Font.PLAIN, 18));
-		lblNewLabel.setBounds(31, 24, 294, 90);
+		lblNewLabel.setBounds(31, 24, 360, 90);
 		panel1.add(lblNewLabel);
 
 		JCheckBox chckbx1 = new JCheckBox("Nada");
