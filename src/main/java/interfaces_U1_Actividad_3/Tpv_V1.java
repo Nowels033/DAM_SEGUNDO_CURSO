@@ -17,12 +17,29 @@ import javax.swing.JTable;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.awt.event.ActionEvent;
+import javax.swing.JComboBox;
+import javax.swing.DefaultComboBoxModel;
+import javax.swing.JLabel;
+import javax.swing.JList;
+import javax.swing.JOptionPane;
+import javax.swing.AbstractListModel;
+import javax.swing.JSlider;
+import javax.swing.event.ChangeListener;
+import javax.swing.event.ChangeEvent;
+import javax.swing.JTextField;
+import java.awt.Color;
+import java.awt.Font;
 
 public class Tpv_V1 extends JFrame {
 
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
 	private JTable tablaMesas;
+	private String nombreProducto = "";
+	private String tipoSeleccionado = "";
+	private int numeroDeModelo = 0;
+	private JTextField totalSinIva;
+	private JTextField totalIva;
 
 	/**
 	 * Launch the application.
@@ -65,10 +82,27 @@ public class Tpv_V1 extends JFrame {
 		DefaultTableModel modelMesa4 = new DefaultTableModel(data, columnNames);
 		DefaultTableModel modelMesa5 = new DefaultTableModel(data, columnNames);
 		DefaultTableModel modelMesa6 = new DefaultTableModel(data, columnNames);
+		modelMesa1.removeRow(0);
+		modelMesa2.removeRow(0);
+		modelMesa3.removeRow(0);
+		modelMesa4.removeRow(0);
+		modelMesa5.removeRow(0);
+		modelMesa6.removeRow(0);
+		
+		//ARRAY DE MODELOS
+		
+		DefaultTableModel [] modelos =new DefaultTableModel[6];
+		modelos[0]=modelMesa1;
+		modelos[1]=modelMesa2;
+		modelos[2]=modelMesa3;
+		modelos[3]=modelMesa4;
+		modelos[4]=modelMesa5;
+		modelos[5]=modelMesa6;
+		
 
 		// ARRAYLIST DE PRODUCTOS
 
-		ArrayList<Producto> productos = Main.iniciarProductos();
+		ArrayList<Producto> productos = Metodos.iniciarProductos();
 
 		// ICONO DE MESA
 
@@ -139,68 +173,313 @@ public class Tpv_V1 extends JFrame {
 
 		tablaMesas = new JTable();
 		// tablaMesas.setModel(modelMesa1);
-		tablaMesas.setBounds(48, 35, 742, 352);
+		tablaMesas.setBounds(48, 35, 742, 310);
 		tabla.add(tablaMesas);
 
 		JButton btnAniadir = new JButton("AÑADIR");
+
 		btnAniadir.setBounds(48, 413, 225, 37);
 		tabla.add(btnAniadir);
 
-		JButton btnEliminar = new JButton("ELIMINAR");
-		btnEliminar.setBounds(309, 413, 225, 37);
-		tabla.add(btnEliminar);
+		JButton btnBorrar = new JButton("BORRAR");
+		
+		btnBorrar.setBounds(309, 413, 225, 37);
+		tabla.add(btnBorrar);
 
 		JButton btnVolver = new JButton("VOLVER");
 		btnVolver.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				cardLayout.show(contentPane, "menu");
+
 			}
 		});
 		btnVolver.setBounds(565, 413, 225, 37);
 		tabla.add(btnVolver);
+		
+		totalSinIva = new JTextField();
+		totalSinIva.setEnabled(false);
+		totalSinIva.setEditable(false);
+		totalSinIva.setBounds(48, 364, 86, 20);
+		tabla.add(totalSinIva);
+		totalSinIva.setColumns(10);
+		
+		totalIva = new JTextField();
+		totalIva.setEnabled(false);
+		totalIva.setEditable(false);
+		totalIva.setBounds(163, 364, 96, 20);
+		tabla.add(totalIva);
+		totalIva.setColumns(10);
+		
+		JLabel lblNewLabel = new JLabel("TOTAL SIN IVA");
+		lblNewLabel.setBounds(48, 350, 86, 14);
+		tabla.add(lblNewLabel);
+		
+		JLabel lblTotalConIva = new JLabel("TOTAL CON IVA");
+		lblTotalConIva.setBounds(163, 350, 96, 14);
+		tabla.add(lblTotalConIva);
+		
+		JLabel lblNewLabel_1 = new JLabel("NOMBRE");
+		lblNewLabel_1.setHorizontalAlignment(SwingConstants.CENTER);
+		lblNewLabel_1.setFont(new Font("Stencil", Font.PLAIN, 11));
+		lblNewLabel_1.setForeground(new Color(0, 0, 0));
+		lblNewLabel_1.setBounds(39, 10, 79, 14);
+		tabla.add(lblNewLabel_1);
+		
+		JLabel lblNewLabel_1_1 = new JLabel("TIPO");
+		lblNewLabel_1_1.setHorizontalAlignment(SwingConstants.CENTER);
+		lblNewLabel_1_1.setForeground(Color.BLACK);
+		lblNewLabel_1_1.setFont(new Font("Stencil", Font.PLAIN, 11));
+		lblNewLabel_1_1.setBounds(180, 10, 79, 14);
+		tabla.add(lblNewLabel_1_1);
+		
+		JLabel lblNewLabel_1_1_1 = new JLabel("CANTIDAD");
+		lblNewLabel_1_1_1.setHorizontalAlignment(SwingConstants.CENTER);
+		lblNewLabel_1_1_1.setForeground(Color.BLACK);
+		lblNewLabel_1_1_1.setFont(new Font("Stencil", Font.PLAIN, 11));
+		lblNewLabel_1_1_1.setBounds(346, 10, 79, 14);
+		tabla.add(lblNewLabel_1_1_1);
+		
+		JLabel lblNewLabel_1_1_1_1 = new JLabel("PRECIO SIN IVA");
+		lblNewLabel_1_1_1_1.setHorizontalAlignment(SwingConstants.CENTER);
+		lblNewLabel_1_1_1_1.setForeground(Color.BLACK);
+		lblNewLabel_1_1_1_1.setFont(new Font("Stencil", Font.PLAIN, 11));
+		lblNewLabel_1_1_1_1.setBounds(510, 10, 79, 14);
+		tabla.add(lblNewLabel_1_1_1_1);
+		
+		JLabel lblNewLabel_1_1_1_1_1 = new JLabel("PRECIO CON IVA");
+		lblNewLabel_1_1_1_1_1.setHorizontalAlignment(SwingConstants.CENTER);
+		lblNewLabel_1_1_1_1_1.setForeground(Color.BLACK);
+		lblNewLabel_1_1_1_1_1.setFont(new Font("Stencil", Font.PLAIN, 11));
+		lblNewLabel_1_1_1_1_1.setBounds(647, 10, 114, 14);
+		tabla.add(lblNewLabel_1_1_1_1_1);
+
+		JPanel aniadir = new JPanel();
+		aniadir.setLayout(null);
+		contentPane.add(aniadir, "añadir");
+
+		JButton btnOk = new JButton("OK");
+		
+		btnOk.setBounds(48, 413, 225, 37);
+		aniadir.add(btnOk);
+
+		JButton btnEliminar_1 = new JButton("ELIMINAR");
+		btnEliminar_1.setBounds(309, 413, 225, 37);
+		aniadir.add(btnEliminar_1);
+
+		
+		//LISTENER VOLVER 2
+		JButton btnVolver2 = new JButton("VOLVER");
+		btnVolver2.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				cardLayout.show(contentPane, "tabla");
+
+			}
+		});
+		btnVolver2.setBounds(565, 413, 225, 37);
+		aniadir.add(btnVolver2);
+
+		JComboBox comboBoxTipo = new JComboBox();
+
+		comboBoxTipo.setModel(new DefaultComboBoxModel(Metodos.arrayTipoProductos()));
+		comboBoxTipo.setBounds(61, 55, 199, 37);
+		aniadir.add(comboBoxTipo);
+
+		JLabel lblLabelTipo = new JLabel("Selecciona el tipo :");
+		lblLabelTipo.setBounds(61, 11, 199, 43);
+		aniadir.add(lblLabelTipo);
+
+		JComboBox comboBoxProducto = new JComboBox();
+		
+		comboBoxProducto.setModel(new DefaultComboBoxModel(new String[] {" ", " "}));
+		comboBoxProducto.setBounds(311, 55, 199, 37);
+		aniadir.add(comboBoxProducto);
+		
+		JSlider numProductos = new JSlider();
+		numProductos.setValue(1);
+		
+		numProductos.setPaintTicks(true);
+		numProductos.setPaintLabels(true);
+		numProductos.setMinimum(1);
+		numProductos.setBounds(586, 55, 240, 37);
+		aniadir.add(numProductos);
+		
+		JLabel lblProducto = new JLabel("1");
+		lblProducto.setHorizontalAlignment(SwingConstants.CENTER);
+		lblProducto.setBounds(672, 124, 46, 14);
+		aniadir.add(lblProducto);
 
 		// LISTENER DE MESAS
 		// MESA 1
 		mesa1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				tablaMesas.setModel(modelMesa1);
+				numeroDeModelo=1;
+				tablaMesas.setModel(modelos[numeroDeModelo-1]);
+				totalSinIva.setText(Metodos.sumarColumna(tablaMesas, 3)+" €");
+				totalIva.setText(Metodos.sumarColumna(tablaMesas, 4)+" €");
 				cardLayout.show(contentPane, "tabla");
+				
+				
 			}
 		});
 		// MESA 2
 		mesa2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				tablaMesas.setModel(modelMesa2);
+				numeroDeModelo=2;
+				tablaMesas.setModel(modelos[numeroDeModelo-1]);
+				totalSinIva.setText(Metodos.sumarColumna(tablaMesas, 3)+" €");
+				totalIva.setText(Metodos.sumarColumna(tablaMesas, 4)+" €");
 				cardLayout.show(contentPane, "tabla");
+				
 			}
 		});
 		// MESA 3
 		mesa3.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				tablaMesas.setModel(modelMesa3);
+				numeroDeModelo=3;
+				tablaMesas.setModel(modelos[numeroDeModelo-1]);
+				totalSinIva.setText(Metodos.sumarColumna(tablaMesas, 3)+" €");
+				totalIva.setText(Metodos.sumarColumna(tablaMesas, 4)+" €");
 				cardLayout.show(contentPane, "tabla");
 			}
 		});
 		// MESA 4
 		mesa4.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				tablaMesas.setModel(modelMesa4);
+				numeroDeModelo=4;
+				tablaMesas.setModel(modelos[numeroDeModelo-1]);
+				totalSinIva.setText(Metodos.sumarColumna(tablaMesas, 3)+" €");
+				totalIva.setText(Metodos.sumarColumna(tablaMesas, 4)+" €");
 				cardLayout.show(contentPane, "tabla");
 			}
 		});
 		// MESA 5
 		mesa5.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				tablaMesas.setModel(modelMesa5);
+				numeroDeModelo=5;
+				tablaMesas.setModel(modelos[numeroDeModelo-1]);
+				totalSinIva.setText(Metodos.sumarColumna(tablaMesas, 3)+" €");
+				totalIva.setText(Metodos.sumarColumna(tablaMesas, 4)+" €");
 				cardLayout.show(contentPane, "tabla");
 			}
 		});
 		// MESA 6
 		mesa6.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				tablaMesas.setModel(modelMesa6);
+				numeroDeModelo=6;
+				tablaMesas.setModel(modelos[numeroDeModelo-1]);
+				totalSinIva.setText(Metodos.sumarColumna(tablaMesas, 3)+" €");
+				totalIva.setText(Metodos.sumarColumna(tablaMesas, 4)+" €");
 				cardLayout.show(contentPane, "tabla");
 			}
 		});
+
+		// LISTENER AÑADIR
+		btnAniadir.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				cardLayout.show(contentPane, "añadir");
+
+				comboBoxTipo.setSelectedIndex(-1);
+				comboBoxProducto.setSelectedIndex(-1);
+				numProductos.setValue(1);
+			}
+		});
+
+		// LISTENER COMBOBOX TIPO
+		
+		comboBoxTipo.addActionListener(new ActionListener() {
+		    public void actionPerformed(ActionEvent e) {
+
+		        tipoSeleccionado = (String) comboBoxTipo.getSelectedItem();
+
+		        if (tipoSeleccionado != null) {
+		            // Se puede eliminar la repetición del código
+		            if (tipoSeleccionado.equalsIgnoreCase("Bebida") || 
+		                tipoSeleccionado.equalsIgnoreCase("Comida") || 
+		                tipoSeleccionado.equalsIgnoreCase("Postre")) {
+
+		                String[] nombres = Metodos.arrayNombreProductos(productos, tipoSeleccionado);
+		                comboBoxProducto.setModel(new DefaultComboBoxModel<>(nombres));
+		            }
+		        } else {
+		            // Manejar caso donde no hay selección o es null
+		            System.out.println("No se ha seleccionado ningún tipo.");
+		        }
+		    }
+		});
+		
+		
+		// LISTENER COMBOBOX NOMBRE PRODUCTO
+		comboBoxProducto.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				 nombreProducto= (String)comboBoxProducto.getSelectedItem();
+			}
+		});
+		
+		//LISTENER CHANGE SLIDER
+		numProductos.addChangeListener(new ChangeListener() {
+			public void stateChanged(ChangeEvent e) {
+				lblProducto.setText(numProductos.getValue()+"");
+			}
+		});
+		
+		//LISTENER BOTON OK
+		btnOk.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				String precioString = "";
+				for (int i = 0; i < productos.size(); i++) {
+					
+					if (nombreProducto.equalsIgnoreCase(productos.get(i).getNombre())) {
+						precioString = productos.get(i).getPrecio()+"";
+					}
+				}
+				
+				
+				String cantidad =lblProducto.getText();
+				String[] aniadirTabla = new String[5];
+				aniadirTabla[0]= nombreProducto;
+				aniadirTabla[1]=tipoSeleccionado;
+				aniadirTabla[2]=cantidad;
+				
+				double precio = Double.parseDouble(precioString);
+				double cantidadDouble =Double.parseDouble(aniadirTabla[2]);	
+				double total = precio*cantidadDouble;
+			
+				aniadirTabla[3]=String.valueOf(total);
+				
+				double porcentaje = 21;
+				double totalConIva= (total*porcentaje/100)+total;
+				
+				aniadirTabla[4]=String.valueOf(totalConIva);
+				
+				
+				Metodos.seleccionarModeloDeTabla(numeroDeModelo, modelos).addRow(aniadirTabla);
+				
+				totalSinIva.setText(Metodos.sumarColumna(tablaMesas, 3)+" €");
+				totalIva.setText(Metodos.sumarColumna(tablaMesas, 4)+" €");
+				
+				
+				
+				cardLayout.show(contentPane, "tabla");
+			}
+		});
+		
+		//LISTENER BOTON BORRAR
+		
+		btnBorrar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				int borrar = tablaMesas.getSelectedRow();
+				if (borrar>=0) {
+					Metodos.seleccionarModeloDeTabla(numeroDeModelo, modelos).removeRow(borrar);
+					totalSinIva.setText(Metodos.sumarColumna(tablaMesas, 3)+" €");
+					totalIva.setText(Metodos.sumarColumna(tablaMesas, 4)+" €");
+				}
+				else {
+					JOptionPane.showMessageDialog(contentPane, "ERROR Selecciona una FILA!!!!");
+				}
+				
+			}
+		});
+		
 	}
 }
