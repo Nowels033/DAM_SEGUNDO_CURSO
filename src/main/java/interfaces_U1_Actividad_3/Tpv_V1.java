@@ -390,7 +390,7 @@ public class Tpv_V1 extends JFrame {
 		        tipoSeleccionado = (String) comboBoxTipo.getSelectedItem();
 
 		        if (tipoSeleccionado != null) {
-		            // Se puede eliminar la repetición del código
+		           
 		            if (tipoSeleccionado.equalsIgnoreCase("Bebida") || 
 		                tipoSeleccionado.equalsIgnoreCase("Comida") || 
 		                tipoSeleccionado.equalsIgnoreCase("Postre")) {
@@ -399,8 +399,8 @@ public class Tpv_V1 extends JFrame {
 		                comboBoxProducto.setModel(new DefaultComboBoxModel<>(nombres));
 		            }
 		        } else {
-		            // Manejar caso donde no hay selección o es null
-		            System.out.println("No se ha seleccionado ningún tipo.");
+		            
+		           // System.out.println("No se ha seleccionado ningún tipo.");
 		        }
 		    }
 		});
