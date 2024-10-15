@@ -400,7 +400,7 @@ public class Tpv_V1 extends JFrame {
 		            }
 		        } else {
 		            
-		           // System.out.println("No se ha seleccionado ningún tipo.");
+		           // System.out.println("No se ha seleccionado");
 		        }
 		    }
 		});
