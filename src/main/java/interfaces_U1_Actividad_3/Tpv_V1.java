@@ -197,6 +197,7 @@ public class Tpv_V1 extends JFrame {
 		tabla.add(btnVolver);
 		
 		totalSinIva = new JTextField();
+		totalSinIva.setFont(new Font("Tahoma", Font.BOLD, 11));
 		totalSinIva.setEnabled(false);
 		totalSinIva.setEditable(false);
 		totalSinIva.setBounds(48, 364, 86, 20);
@@ -204,6 +205,7 @@ public class Tpv_V1 extends JFrame {
 		totalSinIva.setColumns(10);
 		
 		totalIva = new JTextField();
+		totalIva.setFont(new Font("Tahoma", Font.BOLD, 11));
 		totalIva.setEnabled(false);
 		totalIva.setEditable(false);
 		totalIva.setBounds(163, 364, 96, 20);
@@ -261,10 +263,6 @@ public class Tpv_V1 extends JFrame {
 		
 		btnOk.setBounds(48, 413, 225, 37);
 		aniadir.add(btnOk);
-
-		JButton btnEliminar_1 = new JButton("ELIMINAR");
-		btnEliminar_1.setBounds(309, 413, 225, 37);
-		aniadir.add(btnEliminar_1);
 
 		
 		//LISTENER VOLVER 2
