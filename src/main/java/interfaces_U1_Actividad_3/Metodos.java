@@ -1,14 +1,19 @@
 package interfaces_U1_Actividad_3;
 
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.ArrayList;
 
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
 public class Metodos {
 
 //	public static void main(String[] args) {
-//
+//		imprimir();
 //	}
 
 	public static ArrayList<Producto> iniciarProductos() {
@@ -90,39 +95,61 @@ public class Metodos {
 
 		}
 		if (seleccion == 4) {
-			
-			modelMesa=modelos[3];
-			
+
+			modelMesa = modelos[3];
+
 		}
 		if (seleccion == 5) {
-			
-			modelMesa=modelos[4];
-			
+
+			modelMesa = modelos[4];
+
 		}
 		if (seleccion == 6) {
-			
-			modelMesa=modelos[5];
-			
+
+			modelMesa = modelos[5];
+
 		}
-		
+
 		return modelMesa;
 
 	}
-	
-	public static double sumarColumna(JTable table, int colIndex) {
-        double suma = 0;
 
-        for (int i = 0; i < table.getRowCount(); i++) {
-        	
-            double valor = Double.parseDouble((String) table.getValueAt(i, colIndex));
-            
-                suma +=  valor; 
-          
-        }
-        
-        suma=Math.round(suma * 100.0) / 100.0;
+	public static double sumarColumna(JTable tabla, int colIndex) {
+		double suma = 0;
 
-        return suma;
-    }
+		for (int i = 0; i < tabla.getRowCount(); i++) {
 
+			double valor = Double.parseDouble((String) tabla.getValueAt(i, colIndex));
+
+			suma += valor;
+
+		}
+
+		suma = Math.round(suma * 100.0) / 100.0;
+
+		return suma;
+	}
+
+	public static void imprimir(JTable tabla, JPanel contentPain) {
+		// public static void imprimir() {
+		String nombre = JOptionPane.showInputDialog(contentPain, "INTRODUCE EL NOMBRE DEL ARCHIVO");
+		// String nombre = JOptionPane.showInputDialog("INTRODUCE EL NOMBRE DEL
+		// ARCHIVO");
+		File archivo = new File("C:\\" + nombre + ".txt");
+		// System.out.println(nombre);
+		FileWriter fw = null;
+		if (archivo.exists()) {
+			try {
+				fw = new FileWriter(archivo);
+				
+				
+				
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+
+		}
+
+	}
 }

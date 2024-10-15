@@ -254,6 +254,10 @@ public class Tpv_V1 extends JFrame {
 		lblNewLabel_1_1_1_1_1.setFont(new Font("Stencil", Font.PLAIN, 11));
 		lblNewLabel_1_1_1_1_1.setBounds(647, 10, 114, 14);
 		tabla.add(lblNewLabel_1_1_1_1_1);
+		
+		JButton btnImprimir = new JButton("IMPRIMIR");
+		btnImprimir.setBounds(697, 363, 89, 23);
+		tabla.add(btnImprimir);
 
 		JPanel aniadir = new JPanel();
 		aniadir.setLayout(null);

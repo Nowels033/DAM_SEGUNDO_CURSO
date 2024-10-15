@@ -25,19 +25,19 @@ public class CrearProceso {
 			do {
 				line = br.readLine();
 				
-				System.out.println(line);
-				
-				
-				
+				if (line!=null) {
+					System.out.println(line);
+				}
 				
 			//} while (!line.equalsIgnoreCase(""));
-			} while (!br.readLine().isEmpty());
+			} while (line!=null);
 			int retValue = proceso1.waitFor();
 			System.out.println("El proceso termino con un codigo de : "+retValue);
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} catch (InterruptedException e) {
+		
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
