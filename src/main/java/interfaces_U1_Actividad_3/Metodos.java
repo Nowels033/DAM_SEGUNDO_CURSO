@@ -114,12 +114,12 @@ public class Metodos {
 
 	}
 
-	public static double sumarColumna(JTable tabla, int colIndex) {
+	public static double sumarColumna(JTable tabla, int num) {
 		double suma = 0;
 
 		for (int i = 0; i < tabla.getRowCount(); i++) {
 
-			double valor = Double.parseDouble((String) tabla.getValueAt(i, colIndex));
+			double valor = Double.parseDouble((String) tabla.getValueAt(i, num));
 
 			suma += valor;
 
