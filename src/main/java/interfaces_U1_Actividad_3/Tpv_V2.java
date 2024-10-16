@@ -29,8 +29,10 @@ import javax.swing.event.ChangeEvent;
 import javax.swing.JTextField;
 import java.awt.Color;
 import java.awt.Font;
+import javax.swing.JToggleButton;
+import javax.swing.ButtonGroup;
 
-public class Tpv_V1 extends JFrame {
+public class Tpv_V2 extends JFrame {
 
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
@@ -40,6 +42,8 @@ public class Tpv_V1 extends JFrame {
 	private int numeroDeModelo = 0;
 	private JTextField totalSinIva;
 	private JTextField totalIva;
+	private final ButtonGroup buttonGroup = new ButtonGroup();
+	private final ButtonGroup buttonGroup_1 = new ButtonGroup();
 
 	/**
 	 * Launch the application.
@@ -48,7 +52,7 @@ public class Tpv_V1 extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					Tpv_V1 frame = new Tpv_V1();
+					Tpv_V2 frame = new Tpv_V2();
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -60,7 +64,7 @@ public class Tpv_V1 extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public Tpv_V1() {
+	public Tpv_V2() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 893, 535);
 		contentPane = new JPanel();
@@ -284,17 +288,17 @@ public class Tpv_V1 extends JFrame {
 		JComboBox comboBoxTipo = new JComboBox();
 
 		comboBoxTipo.setModel(new DefaultComboBoxModel(Metodos.arrayTipoProductos()));
-		comboBoxTipo.setBounds(61, 55, 199, 37);
+		comboBoxTipo.setBounds(48, 11, 199, 37);
 		aniadir.add(comboBoxTipo);
 
 		JLabel lblLabelTipo = new JLabel("Selecciona el tipo :");
-		lblLabelTipo.setBounds(61, 11, 199, 43);
+		lblLabelTipo.setBounds(61, -18, 199, 43);
 		aniadir.add(lblLabelTipo);
 
 		JComboBox comboBoxProducto = new JComboBox();
 		
 		comboBoxProducto.setModel(new DefaultComboBoxModel(new String[] {" ", " "}));
-		comboBoxProducto.setBounds(311, 55, 199, 37);
+		comboBoxProducto.setBounds(323, 11, 199, 37);
 		aniadir.add(comboBoxProducto);
 		
 		JSlider numProductos = new JSlider();
@@ -303,13 +307,44 @@ public class Tpv_V1 extends JFrame {
 		numProductos.setPaintTicks(true);
 		numProductos.setPaintLabels(true);
 		numProductos.setMinimum(1);
-		numProductos.setBounds(586, 55, 240, 37);
+		numProductos.setBounds(727, 11, 240, 37);
 		aniadir.add(numProductos);
 		
 		JLabel lblProducto = new JLabel("1");
 		lblProducto.setHorizontalAlignment(SwingConstants.CENTER);
-		lblProducto.setBounds(672, 124, 46, 14);
+		lblProducto.setBounds(671, 22, 46, 14);
 		aniadir.add(lblProducto);
+		
+		JPanel botonesTipo = new JPanel();
+		botonesTipo.setBounds(33, 50, 289, 328);
+		aniadir.add(botonesTipo,"botonesTipo");
+		botonesTipo.setLayout(new GridLayout(3, 1, 0, 0));
+		
+		JToggleButton btnComida = new JToggleButton("COMIDA");
+		
+		buttonGroup.add(btnComida);
+		btnComida.setVerticalAlignment(SwingConstants.BOTTOM);
+		botonesTipo.add(btnComida);
+		
+		JToggleButton btnBebida = new JToggleButton("BEBIDA");
+		buttonGroup.add(btnBebida);
+		btnBebida.setVerticalAlignment(SwingConstants.BOTTOM);
+		botonesTipo.add(btnBebida);
+		
+		JToggleButton btnPostre = new JToggleButton("POSTRE");
+		buttonGroup.add(btnPostre);
+		btnPostre.setVerticalAlignment(SwingConstants.BOTTOM);
+		botonesTipo.add(btnPostre);
+//		
+//		JPanel botonesProductos = new JPanel();
+//		botonesProductos.setBounds(376, 50, 240, 328);
+//		aniadir.add(botonesProductos);
+//		botonesProductos.setLayout(new GridLayout(3, 3, 0, 0));
+//		
+//		JToggleButton btnNombre = new JToggleButton("nombre");
+//		buttonGroup_1.add(btnNombre);
+//		btnNombre.setVerticalAlignment(SwingConstants.BOTTOM);
+//		botonesProductos.add(btnNombre);
 
 		// LISTENER DE MESAS
 		// MESA 1
@@ -481,6 +516,16 @@ public class Tpv_V1 extends JFrame {
 					JOptionPane.showMessageDialog(contentPane, "ERROR Selecciona una FILA!!!!");
 				}
 				
+			}
+		});
+		
+		//LISTENER BOTONES DE TIPO DE PRODUCTO
+		//BOTON COMIDA
+		btnComida.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				String[] nombres =Metodos.arrayNombreProductos(productos, btnComida.getText());
+				Metodos.generarBotonesProductos(aniadir, buttonGroup_1, nombres);
 			}
 		});
 		

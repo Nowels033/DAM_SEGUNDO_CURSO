@@ -1,13 +1,17 @@
 package interfaces_U1_Actividad_3;
 
+import java.awt.GridLayout;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 
+import javax.swing.ButtonGroup;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTable;
+import javax.swing.JToggleButton;
+import javax.swing.SwingConstants;
 import javax.swing.table.DefaultTableModel;
 
 public class Metodos {
@@ -57,12 +61,14 @@ public class Metodos {
 	}
 
 	public static String[] arrayNombreProductos(ArrayList<Producto> lista, String nombre) {
-
-//		for (int i = 0; i < lista.size(); i++) {
-//			if (nombre.equalsIgnoreCase(lista.get(i).getTipo())) {
-//				tamanio++;
-//			}
-//		}
+		
+		int tamanio = 0;
+		
+		for (int i = 0; i < lista.size(); i++) {
+			if (nombre.equalsIgnoreCase(lista.get(i).getTipo())) {
+				tamanio++;
+			}
+		}
 
 		String[] nombres = new String[lista.size()];
 
@@ -141,14 +147,29 @@ public class Metodos {
 		if (archivo.exists()) {
 			try {
 				fw = new FileWriter(archivo);
-				
-				
-				
+
 			} catch (IOException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 
+		}
+
+	}
+
+	public static void generarBotonesProductos(JPanel contenedor, ButtonGroup buttonGroup_1, String[] nombres) {
+
+		JPanel botonesProductos = new JPanel();
+		botonesProductos.setBounds(376, 50, 240, 328);
+		contenedor.add(botonesProductos);
+		botonesProductos.setLayout(new GridLayout(3, 3, 0, 0));
+
+		JToggleButton btnNombre;
+		for (int i = 0; i < nombres.length; i++) {
+			btnNombre = new JToggleButton(nombres[i]);
+			buttonGroup_1.add(btnNombre);
+			btnNombre.setVerticalAlignment(SwingConstants.BOTTOM);
+			botonesProductos.add(btnNombre);
 		}
 
 	}
