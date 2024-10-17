@@ -21,11 +21,17 @@ import javax.swing.table.DefaultTableModel;
 
 public class Metodos {
 	
-	public static String nombre;
+	public String nombre;
+	
+	
 
 //	public static void main(String[] args) {
 //		imprimir();
 //	}
+
+	public Metodos() {
+		this.nombre="prueba";
+	}
 
 	public static ArrayList<Producto> iniciarProductos() {
 		ArrayList<Producto> productos = new ArrayList<Producto>();
@@ -47,6 +53,7 @@ public class Metodos {
 		Producto p14 = new Producto("Escalope De Pollo", segundo, 7.0);
 		Producto p15 = new Producto("Hamburguesa", segundo, 8.0);
 		Producto p16 = new Producto("Hamburguesa XL", segundo, 9.0);
+		Producto p17 = new Producto("PIZZA 4 QUESOS", segundo, 12.0);
 
 		productos.add(p1);
 		productos.add(p2);
@@ -64,6 +71,7 @@ public class Metodos {
 		productos.add(p14);
 		productos.add(p15);
 		productos.add(p16);
+		productos.add(p17);
 
 		return productos;
 
@@ -237,9 +245,10 @@ public class Metodos {
 //		return botonesProductos;
 //
 //	}
-	public static JPanel generarBotonesProductos(JPanel contenedor, ButtonGroup buttonGroup_1, String[] nombres) {
+	public static JPanel generarBotonesProductos(JPanel contenedor, ButtonGroup buttonGroup_1, String[] nombres,Metodos nombre) {
 
 	    JPanel botonesProductos = new JPanel();
+	    
 	    
 	    botonesProductos.setBounds(376, 50, 240, 328);
 	    contenedor.add(botonesProductos, "botonesProductos");
@@ -255,17 +264,27 @@ public class Metodos {
 	        
 	        botonesProductos.add(btnNombre);
 
-	        // Capturamos el valor actual de btnNombre en una variable final
+	      
 	        JToggleButton currentButton = btnNombre;
 
 	        btnNombre.addActionListener(new ActionListener() {
 	            public void actionPerformed(ActionEvent e) {
-	                // Usamos currentButton en lugar de btnNombre
-	                System.out.println("Button clicked: " + currentButton.getText());
+	               
+	                System.out.println(currentButton.getText());
+	                nombre.setNombre(currentButton.getText());
 	            }
 	        });
 	    }
 	    
 	    return botonesProductos;
 	}
+
+	public String getNombre() {
+		return nombre;
+	}
+
+	public void setNombre(String nombre) {
+		this.nombre = nombre;
+	}
+	
 }

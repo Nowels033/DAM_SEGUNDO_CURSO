@@ -46,6 +46,7 @@ public class Tpv_V4 extends JFrame {
 	private final ButtonGroup buttonGroup_1 = new ButtonGroup();
 	private String[] nombres;
 	private JPanel botonesProductos=new JPanel();
+	private Metodos nombreProductos=new Metodos(); 
 
 	/**
 	 * Launch the application.
@@ -288,17 +289,19 @@ public class Tpv_V4 extends JFrame {
 		aniadir.add(btnVolver2);
 		
 		JSlider numProductos = new JSlider();
+		numProductos.setOrientation(SwingConstants.VERTICAL);
 		numProductos.setValue(1);
 		
 		numProductos.setPaintTicks(true);
 		numProductos.setPaintLabels(true);
 		numProductos.setMinimum(1);
-		numProductos.setBounds(727, 11, 240, 37);
+		numProductos.setBounds(727, 11, 240, 237);
 		aniadir.add(numProductos);
 		
 		JLabel lblProducto = new JLabel("1");
+		lblProducto.setFont(new Font("Sitka Small", Font.BOLD, 13));
 		lblProducto.setHorizontalAlignment(SwingConstants.CENTER);
-		lblProducto.setBounds(671, 22, 46, 14);
+		lblProducto.setBounds(665, 203, 46, 45);
 		aniadir.add(lblProducto);
 		
 		JPanel botonesTipo = new JPanel();
@@ -426,46 +429,6 @@ public class Tpv_V4 extends JFrame {
 			}
 		});
 		
-		//LISTENER BOTON OK
-		btnOk.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				String precioString = "";
-				for (int i = 0; i < productos.size(); i++) {
-					
-					if (nombreProducto.equalsIgnoreCase(productos.get(i).getNombre())) {
-						precioString = productos.get(i).getPrecio()+"";
-					}
-				}
-				
-				
-				String cantidad =lblProducto.getText();
-				String[] aniadirTabla = new String[5];
-				aniadirTabla[0]= nombreProducto;
-				aniadirTabla[1]=tipoSeleccionado;
-				aniadirTabla[2]=cantidad;
-				
-				double precio = Double.parseDouble(precioString);
-				double cantidadDouble =Double.parseDouble(aniadirTabla[2]);	
-				double total = precio*cantidadDouble;
-			
-				aniadirTabla[3]=String.valueOf(total);
-				
-				double porcentaje = 21;
-				double totalConIva= (total*porcentaje/100)+total;
-				
-				aniadirTabla[4]=String.valueOf(totalConIva);
-				
-				
-				Metodos.seleccionarModeloDeTabla(numeroDeModelo, modelos).addRow(aniadirTabla);
-				
-				totalSinIva.setText(Metodos.sumarColumna(tablaMesas, 3)+" €");
-				totalIva.setText(Metodos.sumarColumna(tablaMesas, 4)+" €");
-				
-				
-				
-				cardLayout.show(contentPane, "tabla");
-			}
-		});
 		
 		//LISTENER BOTON BORRAR
 		
@@ -487,6 +450,8 @@ public class Tpv_V4 extends JFrame {
 		//LISTENER BOTONES DE TIPO DE PRODUCTO
 		//BOTON COMIDA
 		
+		
+		
 		btnEntrante.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
@@ -498,9 +463,12 @@ public class Tpv_V4 extends JFrame {
 				 
 				 aniadir.remove(botonesProductos);
 				
-				 botonesProductos=Metodos.generarBotonesProductos(aniadir, buttonGroup_1, nombres);
+				 botonesProductos=Metodos.generarBotonesProductos(aniadir, buttonGroup_1, nombres,nombreProductos);
+				 
+				 tipoSeleccionado=btnEntrante.getText();
+				 
 				
-				cardLayout.show(contentPane, "botonesProductos");
+				//cardLayout.show(contentPane, "botonesProductos");
 				
 				
 //				JPanel botonesProductos = new JPanel();
@@ -526,7 +494,8 @@ public class Tpv_V4 extends JFrame {
 				
 				 aniadir.remove(botonesProductos);
 					
-				 botonesProductos=Metodos.generarBotonesProductos(aniadir, buttonGroup_1, nombres);
+				 botonesProductos=Metodos.generarBotonesProductos(aniadir, buttonGroup_1, nombres,nombreProductos);
+				 tipoSeleccionado=btnPrimeros.getText();
 				
 			}
 		});
@@ -538,7 +507,8 @@ public class Tpv_V4 extends JFrame {
 				
 				 aniadir.remove(botonesProductos);
 					
-				 botonesProductos=Metodos.generarBotonesProductos(aniadir, buttonGroup_1, nombres);
+				 botonesProductos=Metodos.generarBotonesProductos(aniadir, buttonGroup_1, nombres,nombreProductos);
+				 tipoSeleccionado=btnSegundos.getText();
 				numProductos.setValue(0);
 			}
 		});
@@ -550,7 +520,8 @@ public class Tpv_V4 extends JFrame {
 				
 				 aniadir.remove(botonesProductos);
 					
-				 botonesProductos=Metodos.generarBotonesProductos(aniadir, buttonGroup_1, nombres);
+				 botonesProductos=Metodos.generarBotonesProductos(aniadir, buttonGroup_1, nombres,nombreProductos);
+				 tipoSeleccionado=btnBebida.getText();
 				numProductos.setValue(0);
 			}
 		});
@@ -562,10 +533,61 @@ public class Tpv_V4 extends JFrame {
 				
 				 aniadir.remove(botonesProductos);
 					
-				 botonesProductos=Metodos.generarBotonesProductos(aniadir, buttonGroup_1, nombres);
+				 botonesProductos=Metodos.generarBotonesProductos(aniadir, buttonGroup_1, nombres,nombreProductos);
+				 tipoSeleccionado=btnPostre.getText();
 				numProductos.setValue(0);
 			}
 		});
+		
+		//LISTENER BOTON OK
+				btnOk.addActionListener(new ActionListener() {
+					public void actionPerformed(ActionEvent e) {
+						String precioString = "";
+						for (int i = 0; i < productos.size(); i++) {
+							
+							if (productos.get(i).getNombre().equalsIgnoreCase(nombreProductos.getNombre())) {
+								precioString = productos.get(i).getPrecio()+"";
+							}
+						}
+						
+						//if(buttonGroup.isSelected(null)) {
+							String cantidad =lblProducto.getText();
+							String[] aniadirTabla = new String[5];
+							aniadirTabla[0]= nombreProductos.getNombre();
+							aniadirTabla[1]=tipoSeleccionado;
+							aniadirTabla[2]=cantidad;
+							
+							double precio = Double.parseDouble(precioString);
+							double cantidadDouble =Double.parseDouble(aniadirTabla[2]);	
+							double total = precio*cantidadDouble;
+						
+							aniadirTabla[3]=String.valueOf(total);
+							
+							double porcentaje = 21;
+							double totalConIva= (total*porcentaje/100)+total;
+							
+							aniadirTabla[4]=String.valueOf(totalConIva);
+							
+							
+							Metodos.seleccionarModeloDeTabla(numeroDeModelo, modelos).addRow(aniadirTabla);
+							
+							totalSinIva.setText(Metodos.sumarColumna(tablaMesas, 3)+" €");
+							totalIva.setText(Metodos.sumarColumna(tablaMesas, 4)+" €");
+							
+							buttonGroup.clearSelection();
+							buttonGroup_1.clearSelection();
+							
+							cardLayout.show(contentPane, "tabla");
+						//}
+						
+//						else {
+//							JOptionPane.showMessageDialog(contentPane, "SELECCIONA TODOS LOS CAMPOS!!!!");
+//						}
+						
+					
+					}
+				});
+				
 		
 	}
 }
