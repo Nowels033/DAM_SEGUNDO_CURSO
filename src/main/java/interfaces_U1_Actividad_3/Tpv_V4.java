@@ -32,7 +32,7 @@ import java.awt.Font;
 import javax.swing.JToggleButton;
 import javax.swing.ButtonGroup;
 
-public class Tpv_V2 extends JFrame {
+public class Tpv_V4 extends JFrame {
 
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
@@ -44,6 +44,8 @@ public class Tpv_V2 extends JFrame {
 	private JTextField totalIva;
 	private final ButtonGroup buttonGroup = new ButtonGroup();
 	private final ButtonGroup buttonGroup_1 = new ButtonGroup();
+	private String[] nombres;
+	private JPanel botonesProductos=new JPanel();
 
 	/**
 	 * Launch the application.
@@ -52,7 +54,7 @@ public class Tpv_V2 extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					Tpv_V2 frame = new Tpv_V2();
+					Tpv_V4 frame = new Tpv_V4();
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -64,7 +66,7 @@ public class Tpv_V2 extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public Tpv_V2() {
+	public Tpv_V4() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 893, 535);
 		contentPane = new JPanel();
@@ -284,22 +286,6 @@ public class Tpv_V2 extends JFrame {
 		});
 		btnVolver2.setBounds(614, 390, 225, 37);
 		aniadir.add(btnVolver2);
-
-		JComboBox comboBoxTipo = new JComboBox();
-
-		comboBoxTipo.setModel(new DefaultComboBoxModel(Metodos.arrayTipoProductos()));
-		comboBoxTipo.setBounds(48, 11, 199, 37);
-		aniadir.add(comboBoxTipo);
-
-		JLabel lblLabelTipo = new JLabel("Selecciona el tipo :");
-		lblLabelTipo.setBounds(61, -18, 199, 43);
-		aniadir.add(lblLabelTipo);
-
-		JComboBox comboBoxProducto = new JComboBox();
-		
-		comboBoxProducto.setModel(new DefaultComboBoxModel(new String[] {" ", " "}));
-		comboBoxProducto.setBounds(323, 11, 199, 37);
-		aniadir.add(comboBoxProducto);
 		
 		JSlider numProductos = new JSlider();
 		numProductos.setValue(1);
@@ -321,6 +307,7 @@ public class Tpv_V2 extends JFrame {
 		botonesTipo.setLayout(new GridLayout(0, 1, 0, 0));
 		
 		JToggleButton btnEntrante = new JToggleButton("ENTRANTE");
+		
 		
 		buttonGroup.add(btnEntrante);
 		btnEntrante.setVerticalAlignment(SwingConstants.BOTTOM);
@@ -426,42 +413,9 @@ public class Tpv_V2 extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				cardLayout.show(contentPane, "añadir");
 
-				comboBoxTipo.setSelectedIndex(-1);
-				comboBoxProducto.setSelectedIndex(-1);
+				//comboBoxTipo.setSelectedIndex(-1);
+				//comboBoxProducto.setSelectedIndex(-1);
 				numProductos.setValue(1);
-			}
-		});
-
-		// LISTENER COMBOBOX TIPO
-		
-		comboBoxTipo.addActionListener(new ActionListener() {
-		    public void actionPerformed(ActionEvent e) {
-
-		        tipoSeleccionado = (String) comboBoxTipo.getSelectedItem();
-
-		        if (tipoSeleccionado != null) {
-		           
-		            if (tipoSeleccionado.equalsIgnoreCase("Bebida") || 
-		                tipoSeleccionado.equalsIgnoreCase("Comida") || 
-		                tipoSeleccionado.equalsIgnoreCase("Postre")) {
-
-		                String[] nombres = Metodos.arrayNombreProductos(productos, tipoSeleccionado);
-		                comboBoxProducto.setModel(new DefaultComboBoxModel<>(nombres));
-		            }
-		        } else {
-		            
-		           // System.out.println("No se ha seleccionado");
-		        }
-		        buttonGroup.clearSelection();
-		    }
-		});
-		
-		
-		// LISTENER COMBOBOX NOMBRE PRODUCTO
-		comboBoxProducto.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				
-				 nombreProducto= (String)comboBoxProducto.getSelectedItem();
 			}
 		});
 		
@@ -532,16 +486,21 @@ public class Tpv_V2 extends JFrame {
 		
 		//LISTENER BOTONES DE TIPO DE PRODUCTO
 		//BOTON COMIDA
+		
 		btnEntrante.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
 				//System.out.println("HOLA");
 				
-				String[] nombres =Metodos.arrayNombreProductos(productos, btnEntrante.getText());
+				 nombres =Metodos.arrayNombreProductos(productos, btnEntrante.getText());
+				
+				//cardLayout.show(contentPane, "botonesProductos");
+				 
+				 aniadir.remove(botonesProductos);
+				
+				 botonesProductos=Metodos.generarBotonesProductos(aniadir, buttonGroup_1, nombres);
 				
 				cardLayout.show(contentPane, "botonesProductos");
-				
-				Metodos.generarBotonesProductos(aniadir, buttonGroup_1, nombres);
 				
 				
 //				JPanel botonesProductos = new JPanel();
@@ -559,40 +518,52 @@ public class Tpv_V2 extends JFrame {
 			}
 		});
 		
+		
 		btnPrimeros.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				String[] nombres2 =Metodos.arrayNombreProductos(productos, btnPrimeros.getText());
+				numProductos.setValue(0);
+				 nombres =Metodos.arrayNombreProductos(productos, btnPrimeros.getText());
 				
+				 aniadir.remove(botonesProductos);
+					
+				 botonesProductos=Metodos.generarBotonesProductos(aniadir, buttonGroup_1, nombres);
 				
-				cardLayout.show(contentPane, "botonesProductos");
-				Metodos.generarBotonesProductos(aniadir, buttonGroup_1, nombres2);
 			}
 		});
 		btnSegundos.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				String[] nombres3 =Metodos.arrayNombreProductos(productos, btnSegundos.getText());
+				 nombres =Metodos.arrayNombreProductos(productos, btnSegundos.getText());
 				
 				
 				
-				Metodos.generarBotonesProductos(aniadir, buttonGroup_1, nombres3);
+				 aniadir.remove(botonesProductos);
+					
+				 botonesProductos=Metodos.generarBotonesProductos(aniadir, buttonGroup_1, nombres);
+				numProductos.setValue(0);
 			}
 		});
 		btnBebida.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				String[] nombres4 =Metodos.arrayNombreProductos(productos, btnBebida.getText());
+				 nombres =Metodos.arrayNombreProductos(productos, btnBebida.getText());
 				
 				
 				
-				Metodos.generarBotonesProductos(aniadir, buttonGroup_1, nombres4);
+				 aniadir.remove(botonesProductos);
+					
+				 botonesProductos=Metodos.generarBotonesProductos(aniadir, buttonGroup_1, nombres);
+				numProductos.setValue(0);
 			}
 		});
 		btnPostre.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				String[] nombres5 =Metodos.arrayNombreProductos(productos, btnPostre.getText());
+				 nombres =Metodos.arrayNombreProductos(productos, btnPostre.getText());
 				
 				
 				
-				Metodos.generarBotonesProductos(aniadir, buttonGroup_1, nombres5);
+				 aniadir.remove(botonesProductos);
+					
+				 botonesProductos=Metodos.generarBotonesProductos(aniadir, buttonGroup_1, nombres);
+				numProductos.setValue(0);
 			}
 		});
 		
