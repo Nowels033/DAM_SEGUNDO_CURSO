@@ -498,7 +498,7 @@ public class Tpv_V3 extends JFrame {
 				 
 				 aniadir.remove(botonesProductos);
 				
-				 botonesProductos=Metodos.generarBotonesProductos(aniadir, buttonGroup_1, nombres);
+		//		 botonesProductos=Metodos.generarBotonesProductos(aniadir, buttonGroup_1, nombres);
 				
 				cardLayout.show(contentPane, "botonesProductos");
 				
@@ -526,7 +526,7 @@ public class Tpv_V3 extends JFrame {
 				
 				 aniadir.remove(botonesProductos);
 					
-				 botonesProductos=Metodos.generarBotonesProductos(aniadir, buttonGroup_1, nombres);
+			//	 botonesProductos=Metodos.generarBotonesProductos(aniadir, buttonGroup_1, nombres);
 				
 			}
 		});
@@ -538,7 +538,7 @@ public class Tpv_V3 extends JFrame {
 				
 				 aniadir.remove(botonesProductos);
 					
-				 botonesProductos=Metodos.generarBotonesProductos(aniadir, buttonGroup_1, nombres);
+			//	 botonesProductos=Metodos.generarBotonesProductos(aniadir, buttonGroup_1, nombres);
 				numProductos.setValue(0);
 			}
 		});
@@ -550,7 +550,7 @@ public class Tpv_V3 extends JFrame {
 				
 				 aniadir.remove(botonesProductos);
 					
-				 botonesProductos=Metodos.generarBotonesProductos(aniadir, buttonGroup_1, nombres);
+			//	 botonesProductos=Metodos.generarBotonesProductos(aniadir, buttonGroup_1, nombres);
 				numProductos.setValue(0);
 			}
 		});
@@ -562,7 +562,7 @@ public class Tpv_V3 extends JFrame {
 				
 				 aniadir.remove(botonesProductos);
 					
-				 botonesProductos=Metodos.generarBotonesProductos(aniadir, buttonGroup_1, nombres);
+			//	 botonesProductos=Metodos.generarBotonesProductos(aniadir, buttonGroup_1, nombres);
 				numProductos.setValue(0);
 			}
 		});

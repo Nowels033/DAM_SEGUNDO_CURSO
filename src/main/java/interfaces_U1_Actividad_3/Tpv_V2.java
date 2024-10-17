@@ -541,7 +541,7 @@ public class Tpv_V2 extends JFrame {
 				
 				cardLayout.show(contentPane, "botonesProductos");
 				
-				Metodos.generarBotonesProductos(aniadir, buttonGroup_1, nombres);
+			//	Metodos.generarBotonesProductos(aniadir, buttonGroup_1, nombres);
 				
 				
 //				JPanel botonesProductos = new JPanel();
@@ -565,7 +565,7 @@ public class Tpv_V2 extends JFrame {
 				
 				
 				cardLayout.show(contentPane, "botonesProductos");
-				Metodos.generarBotonesProductos(aniadir, buttonGroup_1, nombres2);
+		//		Metodos.generarBotonesProductos(aniadir, buttonGroup_1, nombres2);
 			}
 		});
 		btnSegundos.addActionListener(new ActionListener() {
@@ -574,7 +574,7 @@ public class Tpv_V2 extends JFrame {
 				
 				
 				
-				Metodos.generarBotonesProductos(aniadir, buttonGroup_1, nombres3);
+		//		Metodos.generarBotonesProductos(aniadir, buttonGroup_1, nombres3);
 			}
 		});
 		btnBebida.addActionListener(new ActionListener() {
@@ -583,7 +583,7 @@ public class Tpv_V2 extends JFrame {
 				
 				
 				
-				Metodos.generarBotonesProductos(aniadir, buttonGroup_1, nombres4);
+			//	Metodos.generarBotonesProductos(aniadir, buttonGroup_1, nombres4);
 			}
 		});
 		btnPostre.addActionListener(new ActionListener() {
@@ -592,7 +592,7 @@ public class Tpv_V2 extends JFrame {
 				
 				
 				
-				Metodos.generarBotonesProductos(aniadir, buttonGroup_1, nombres5);
+				//Metodos.generarBotonesProductos(aniadir, buttonGroup_1, nombres5);
 			}
 		});
 		
