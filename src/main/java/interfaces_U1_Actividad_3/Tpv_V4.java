@@ -503,6 +503,8 @@ public class Tpv_V4 extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				 nombres =Metodos.arrayNombreProductos(productos, btnSegundos.getText());
 				
+				 
+				 
 				
 				
 				 aniadir.remove(botonesProductos);
