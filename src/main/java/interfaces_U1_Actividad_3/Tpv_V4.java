@@ -39,6 +39,7 @@ public class Tpv_V4 extends JFrame {
 	private JTable tablaMesas;
 	private String nombreProducto = "";
 	private String tipoSeleccionado = "";
+	private boolean modificar=false;
 	private int numeroDeModelo = 0;
 	private JTextField totalSinIva;
 	private JTextField totalIva;
@@ -180,8 +181,15 @@ public class Tpv_V4 extends JFrame {
 		tabla.setLayout(null);
 
 		tablaMesas = new JTable();
+		tablaMesas.setFont(new Font("Tahoma", Font.PLAIN, 10));
+		tablaMesas.setModel(new DefaultTableModel(
+			new Object[][] {
+			},
+			new String[] {
+			}
+		));
 		// tablaMesas.setModel(modelMesa1);
-		tablaMesas.setBounds(48, 35, 742, 310);
+		tablaMesas.setBounds(10, 35, 846, 310);
 		tabla.add(tablaMesas);
 
 		JButton btnAniadir = new JButton("AÑADIR");
@@ -232,40 +240,45 @@ public class Tpv_V4 extends JFrame {
 		lblNewLabel_1.setHorizontalAlignment(SwingConstants.CENTER);
 		lblNewLabel_1.setFont(new Font("Stencil", Font.PLAIN, 11));
 		lblNewLabel_1.setForeground(new Color(0, 0, 0));
-		lblNewLabel_1.setBounds(39, 10, 79, 14);
+		lblNewLabel_1.setBounds(69, 11, 79, 14);
 		tabla.add(lblNewLabel_1);
 		
 		JLabel lblNewLabel_1_1 = new JLabel("TIPO");
 		lblNewLabel_1_1.setHorizontalAlignment(SwingConstants.CENTER);
 		lblNewLabel_1_1.setForeground(Color.BLACK);
 		lblNewLabel_1_1.setFont(new Font("Stencil", Font.PLAIN, 11));
-		lblNewLabel_1_1.setBounds(180, 10, 79, 14);
+		lblNewLabel_1_1.setBounds(210, 11, 79, 14);
 		tabla.add(lblNewLabel_1_1);
 		
 		JLabel lblNewLabel_1_1_1 = new JLabel("CANTIDAD");
 		lblNewLabel_1_1_1.setHorizontalAlignment(SwingConstants.CENTER);
 		lblNewLabel_1_1_1.setForeground(Color.BLACK);
 		lblNewLabel_1_1_1.setFont(new Font("Stencil", Font.PLAIN, 11));
-		lblNewLabel_1_1_1.setBounds(346, 10, 79, 14);
+		lblNewLabel_1_1_1.setBounds(376, 11, 79, 14);
 		tabla.add(lblNewLabel_1_1_1);
 		
 		JLabel lblNewLabel_1_1_1_1 = new JLabel("PRECIO SIN IVA");
 		lblNewLabel_1_1_1_1.setHorizontalAlignment(SwingConstants.CENTER);
 		lblNewLabel_1_1_1_1.setForeground(Color.BLACK);
 		lblNewLabel_1_1_1_1.setFont(new Font("Stencil", Font.PLAIN, 11));
-		lblNewLabel_1_1_1_1.setBounds(510, 10, 79, 14);
+		lblNewLabel_1_1_1_1.setBounds(540, 11, 79, 14);
 		tabla.add(lblNewLabel_1_1_1_1);
 		
 		JLabel lblNewLabel_1_1_1_1_1 = new JLabel("PRECIO CON IVA");
 		lblNewLabel_1_1_1_1_1.setHorizontalAlignment(SwingConstants.CENTER);
 		lblNewLabel_1_1_1_1_1.setForeground(Color.BLACK);
 		lblNewLabel_1_1_1_1_1.setFont(new Font("Stencil", Font.PLAIN, 11));
-		lblNewLabel_1_1_1_1_1.setBounds(647, 10, 114, 14);
+		lblNewLabel_1_1_1_1_1.setBounds(677, 11, 114, 14);
 		tabla.add(lblNewLabel_1_1_1_1_1);
 		
 		JButton btnImprimir = new JButton("IMPRIMIR");
 		btnImprimir.setBounds(697, 363, 89, 23);
 		tabla.add(btnImprimir);
+		
+		JButton btnModificar = new JButton("MODIFICAR");
+		
+		btnModificar.setBounds(309, 363, 225, 37);
+		tabla.add(btnModificar);
 
 		JPanel aniadir = new JPanel();
 		aniadir.setLayout(null);
@@ -544,42 +557,49 @@ public class Tpv_V4 extends JFrame {
 		//LISTENER BOTON OK
 				btnOk.addActionListener(new ActionListener() {
 					public void actionPerformed(ActionEvent e) {
-						String precioString = "";
-						for (int i = 0; i < productos.size(); i++) {
-							
-							if (productos.get(i).getNombre().equalsIgnoreCase(nombreProductos.getNombre())) {
-								precioString = productos.get(i).getPrecio()+"";
+						if(!modificar ) {
+							String precioString = "";
+							for (int i = 0; i < productos.size(); i++) {
+								
+								if (productos.get(i).getNombre().equalsIgnoreCase(nombreProductos.getNombre())) {
+									precioString = productos.get(i).getPrecio()+"";
+								}
 							}
+							
+							//if(buttonGroup.isSelected(null)) {
+								String cantidad =lblProducto.getText();
+								String[] aniadirTabla = new String[5];
+								aniadirTabla[0]= nombreProductos.getNombre().toUpperCase();
+								aniadirTabla[1]=tipoSeleccionado;
+								aniadirTabla[2]=cantidad;
+								
+								double precio = Double.parseDouble(precioString);
+								double cantidadDouble =Double.parseDouble(aniadirTabla[2]);	
+								double total = precio*cantidadDouble;
+							
+								aniadirTabla[3]=String.valueOf(total);
+								
+								double porcentaje = 21;
+								double totalConIva= (total*porcentaje/100)+total;
+								
+								aniadirTabla[4]=String.valueOf(totalConIva);
+								
+								
+								Metodos.seleccionarModeloDeTabla(numeroDeModelo, modelos).addRow(aniadirTabla);
+								
+								totalSinIva.setText(Metodos.sumarColumna(tablaMesas, 3)+" €");
+								totalIva.setText(Metodos.sumarColumna(tablaMesas, 4)+" €");
+								
+								buttonGroup.clearSelection();
+								buttonGroup_1.clearSelection();
+								
+								cardLayout.show(contentPane, "tabla");
 						}
-						
-						//if(buttonGroup.isSelected(null)) {
-							String cantidad =lblProducto.getText();
-							String[] aniadirTabla = new String[5];
-							aniadirTabla[0]= nombreProductos.getNombre();
-							aniadirTabla[1]=tipoSeleccionado;
-							aniadirTabla[2]=cantidad;
-							
-							double precio = Double.parseDouble(precioString);
-							double cantidadDouble =Double.parseDouble(aniadirTabla[2]);	
-							double total = precio*cantidadDouble;
-						
-							aniadirTabla[3]=String.valueOf(total);
-							
-							double porcentaje = 21;
-							double totalConIva= (total*porcentaje/100)+total;
-							
-							aniadirTabla[4]=String.valueOf(totalConIva);
+						else {
 							
 							
-							Metodos.seleccionarModeloDeTabla(numeroDeModelo, modelos).addRow(aniadirTabla);
-							
-							totalSinIva.setText(Metodos.sumarColumna(tablaMesas, 3)+" €");
-							totalIva.setText(Metodos.sumarColumna(tablaMesas, 4)+" €");
-							
-							buttonGroup.clearSelection();
-							buttonGroup_1.clearSelection();
-							
-							cardLayout.show(contentPane, "tabla");
+							modificar=false;
+						}
 						//}
 						
 //						else {
@@ -587,6 +607,31 @@ public class Tpv_V4 extends JFrame {
 //						}
 						
 					
+					}
+				});
+				
+				//LISTENER DE BOTON MODIFICAR
+				btnModificar.addActionListener(new ActionListener() {
+					public void actionPerformed(ActionEvent e) {
+						String tipo="",producto="",cantidad="";
+						int fila =tablaMesas.getSelectedRow();
+						if (fila >= 0) {
+							
+							modificar=true;
+							producto=(String) Metodos.seleccionarModeloDeTabla(numeroDeModelo, modelos).getValueAt(fila, 0);
+							tipo=(String) Metodos.seleccionarModeloDeTabla(numeroDeModelo, modelos).getValueAt(fila, 1);
+							cantidad=(String) Metodos.seleccionarModeloDeTabla(numeroDeModelo, modelos).getValueAt(fila, 2);
+							
+							numProductos.setValue(Integer.parseInt(cantidad));
+							
+							cardLayout.show(contentPane, "añadir");
+							
+						}
+						else {
+							JOptionPane.showMessageDialog(contentPane, "Selecciona una fila para MODIFICAR");
+						}
+						
+						
 					}
 				});
 				
