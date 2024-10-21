@@ -16,6 +16,7 @@ import javax.swing.SwingConstants;
 import javax.swing.JTable;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.awt.event.ActionEvent;
 import javax.swing.JComboBox;
 import javax.swing.DefaultComboBoxModel;
@@ -127,53 +128,29 @@ public class Tpv_V4 extends JFrame {
 		menu.setLayout(new GridLayout(0, 2, 0, 0));
 
 		// MESA1
-
-		JButton mesa1 = new JButton("Mesa 1");
-
-		menu.add(mesa1);
-		mesa1.setIcon(imageiconMesa);
-		mesa1.setHorizontalTextPosition(SwingConstants.CENTER);
-		mesa1.setVerticalTextPosition(SwingConstants.BOTTOM);
-
-		// MESA2
-		JButton mesa2 = new JButton("Mesa 2");
-		mesa2.setVerticalAlignment(SwingConstants.BOTTOM);
-		menu.add(mesa2);
-		mesa2.setIcon(imageiconMesa);
-		mesa2.setHorizontalTextPosition(SwingConstants.CENTER);
-		mesa2.setVerticalTextPosition(SwingConstants.BOTTOM);
-
-		// MESA3
-		JButton mesa3 = new JButton("Mesa 3");
-		mesa3.setVerticalAlignment(SwingConstants.BOTTOM);
-		menu.add(mesa3);
-		mesa3.setIcon(imageiconMesa);
-		mesa3.setHorizontalTextPosition(SwingConstants.CENTER);
-		mesa3.setVerticalTextPosition(SwingConstants.BOTTOM);
-
-		// MESA4
-		JButton mesa4 = new JButton("Mesa 4");
-		mesa4.setVerticalAlignment(SwingConstants.BOTTOM);
-		menu.add(mesa4);
-		mesa4.setIcon(imageiconMesa);
-		mesa4.setHorizontalTextPosition(SwingConstants.CENTER);
-		mesa4.setVerticalTextPosition(SwingConstants.BOTTOM);
-
-		// MESA5
-		JButton mesa5 = new JButton("Mesa 5");
-		mesa5.setVerticalAlignment(SwingConstants.BOTTOM);
-		menu.add(mesa5);
-		mesa5.setIcon(imageiconMesa);
-		mesa5.setHorizontalTextPosition(SwingConstants.CENTER);
-		mesa5.setVerticalTextPosition(SwingConstants.BOTTOM);
-
-		// MESA6
-		JButton mesa6 = new JButton("Mesa 6");
-		mesa6.setVerticalAlignment(SwingConstants.BOTTOM);
-		menu.add(mesa6);
-		mesa6.setIcon(imageiconMesa);
-		mesa6.setHorizontalTextPosition(SwingConstants.CENTER);
-		mesa6.setVerticalTextPosition(SwingConstants.BOTTOM);
+		ArrayList<JButton> mesas = new ArrayList<JButton>();
+		
+		for (int i=1; i<7; i++) {
+			int indexMesas = i;
+			JButton mesa1 = new JButton("Mesa "+i);
+			menu.add(mesa1);
+			mesa1.setIcon(imageiconMesa);
+			mesa1.setHorizontalTextPosition(SwingConstants.CENTER);
+			mesa1.setVerticalTextPosition(SwingConstants.BOTTOM);
+			mesa1.addActionListener(new ActionListener() {
+				
+				public void actionPerformed(ActionEvent e) {
+					numeroDeModelo=indexMesas;
+					tablaMesas.setModel(modelos[numeroDeModelo-1]);
+					totalSinIva.setText(Metodos.sumarColumna(tablaMesas, 3)+" €");
+					totalIva.setText(Metodos.sumarColumna(tablaMesas, 4)+" €");
+					cardLayout.show(contentPane, "tabla");
+					
+					
+				}
+			});
+		}
+		
 
 		// PANEL DE TABLA
 		JPanel tabla = new JPanel();
@@ -283,7 +260,7 @@ public class Tpv_V4 extends JFrame {
 		JPanel aniadir = new JPanel();
 		aniadir.setLayout(null);
 		contentPane.add(aniadir, "añadir");
-
+		
 		JButton btnOk = new JButton("OK");
 		
 		btnOk.setBounds(614, 438, 225, 37);
@@ -321,107 +298,7 @@ public class Tpv_V4 extends JFrame {
 		aniadir.add(botonesTipo,"botonesTipo");
 		botonesTipo.setLayout(new GridLayout(0, 1, 0, 0));
 		
-		JToggleButton btnEntrante = new JToggleButton("ENTRANTE");
-		
-		
-		buttonGroup.add(btnEntrante);
-		btnEntrante.setVerticalAlignment(SwingConstants.BOTTOM);
-		botonesTipo.add(btnEntrante);
-		
-		JToggleButton btnPrimeros = new JToggleButton("PRIMERO");
-		
-		buttonGroup.add(btnPrimeros);
-		btnPrimeros.setVerticalAlignment(SwingConstants.BOTTOM);
-		botonesTipo.add(btnPrimeros);
-		
-		JToggleButton btnSegundos = new JToggleButton("SEGUNDO");
-		buttonGroup.add(btnSegundos);
-		btnSegundos.setVerticalAlignment(SwingConstants.BOTTOM);
-		botonesTipo.add(btnSegundos);
-		
-		JToggleButton btnBebida = new JToggleButton("BEBIDA");
-		btnBebida.setVerticalAlignment(SwingConstants.BOTTOM);
-		buttonGroup.add(btnBebida);
-		botonesTipo.add(btnBebida);
-		
-		JToggleButton btnPostre = new JToggleButton("POSTRE");
-		buttonGroup.add(btnPostre);
-		botonesTipo.add(btnPostre);
-//		
-//		JPanel botonesProductos = new JPanel();
-//		botonesProductos.setBounds(376, 50, 240, 328);
-//		aniadir.add(botonesProductos);
-//		botonesProductos.setLayout(new GridLayout(3, 3, 0, 0));
-//		
-//		JToggleButton btnNombre = new JToggleButton("nombre");
-//		buttonGroup_1.add(btnNombre);
-//		btnNombre.setVerticalAlignment(SwingConstants.BOTTOM);
-//		botonesProductos.add(btnNombre);
-
-		// LISTENER DE MESAS
-		// MESA 1
-		mesa1.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				numeroDeModelo=1;
-				tablaMesas.setModel(modelos[numeroDeModelo-1]);
-				totalSinIva.setText(Metodos.sumarColumna(tablaMesas, 3)+" €");
-				totalIva.setText(Metodos.sumarColumna(tablaMesas, 4)+" €");
-				cardLayout.show(contentPane, "tabla");
-				
-				
-			}
-		});
-		// MESA 2
-		mesa2.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				numeroDeModelo=2;
-				tablaMesas.setModel(modelos[numeroDeModelo-1]);
-				totalSinIva.setText(Metodos.sumarColumna(tablaMesas, 3)+" €");
-				totalIva.setText(Metodos.sumarColumna(tablaMesas, 4)+" €");
-				cardLayout.show(contentPane, "tabla");
-				
-			}
-		});
-		// MESA 3
-		mesa3.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				numeroDeModelo=3;
-				tablaMesas.setModel(modelos[numeroDeModelo-1]);
-				totalSinIva.setText(Metodos.sumarColumna(tablaMesas, 3)+" €");
-				totalIva.setText(Metodos.sumarColumna(tablaMesas, 4)+" €");
-				cardLayout.show(contentPane, "tabla");
-			}
-		});
-		// MESA 4
-		mesa4.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				numeroDeModelo=4;
-				tablaMesas.setModel(modelos[numeroDeModelo-1]);
-				totalSinIva.setText(Metodos.sumarColumna(tablaMesas, 3)+" €");
-				totalIva.setText(Metodos.sumarColumna(tablaMesas, 4)+" €");
-				cardLayout.show(contentPane, "tabla");
-			}
-		});
-		// MESA 5
-		mesa5.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				numeroDeModelo=5;
-				tablaMesas.setModel(modelos[numeroDeModelo-1]);
-				totalSinIva.setText(Metodos.sumarColumna(tablaMesas, 3)+" €");
-				totalIva.setText(Metodos.sumarColumna(tablaMesas, 4)+" €");
-				cardLayout.show(contentPane, "tabla");
-			}
-		});
-		// MESA 6
-		mesa6.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				numeroDeModelo=6;
-				tablaMesas.setModel(modelos[numeroDeModelo-1]);
-				totalSinIva.setText(Metodos.sumarColumna(tablaMesas, 3)+" €");
-				totalIva.setText(Metodos.sumarColumna(tablaMesas, 4)+" €");
-				cardLayout.show(contentPane, "tabla");
-			}
-		});
+	
 
 		// LISTENER AÑADIR
 		btnAniadir.addActionListener(new ActionListener() {
@@ -436,6 +313,7 @@ public class Tpv_V4 extends JFrame {
 		
 		//LISTENER CHANGE SLIDER
 		numProductos.addChangeListener(new ChangeListener() {
+			
 			public void stateChanged(ChangeEvent e) {
 				lblProducto.setText(numProductos.getValue()+"");
 			}
@@ -459,99 +337,8 @@ public class Tpv_V4 extends JFrame {
 			}
 		});
 		
-		//LISTENER BOTONES DE TIPO DE PRODUCTO
-		//BOTON COMIDA
 		
-		
-		
-		btnEntrante.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				
-				//System.out.println("HOLA");
-				
-				 nombres =Metodos.arrayNombreProductos(productos, btnEntrante.getText());
-				
-				//cardLayout.show(contentPane, "botonesProductos");
-				 
-				 aniadir.remove(botonesProductos);
-				
-				 botonesProductos=Metodos.generarBotonesProductos(aniadir, buttonGroup_1, nombres,nombreProductos);
-				 
-				 tipoSeleccionado=btnEntrante.getText();
-				 
-				
-				//cardLayout.show(contentPane, "botonesProductos");
-				
-				
-//				JPanel botonesProductos = new JPanel();
-//				botonesProductos.setBounds(376, 50, 240, 328);
-//				aniadir.add(botonesProductos);
-//				botonesProductos.setLayout(new GridLayout(3, 3, 0, 0));
-//
-//				JToggleButton btnNombre;
-//				for (int i = 0; i < nombres.length; i++) {
-//					btnNombre = new JToggleButton(nombres[i]);
-//					buttonGroup_1.add(btnNombre);
-//					btnNombre.setVerticalAlignment(SwingConstants.BOTTOM);
-//					botonesProductos.add(btnNombre);
-//				}
-			}
-		});
-		
-		
-		btnPrimeros.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				//numProductos.setValue(0);
-				 nombres =Metodos.arrayNombreProductos(productos, btnPrimeros.getText());
-				
-				 aniadir.remove(botonesProductos);
-					
-				 botonesProductos=Metodos.generarBotonesProductos(aniadir, buttonGroup_1, nombres,nombreProductos);
-				 tipoSeleccionado=btnPrimeros.getText();
-				
-			}
-		});
-		btnSegundos.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				 nombres =Metodos.arrayNombreProductos(productos, btnSegundos.getText());
-				
-				 
-				 
-				
-				
-				 aniadir.remove(botonesProductos);
-					
-				 botonesProductos=Metodos.generarBotonesProductos(aniadir, buttonGroup_1, nombres,nombreProductos);
-				 tipoSeleccionado=btnSegundos.getText();
-				numProductos.setValue(0);
-			}
-		});
-		btnBebida.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				 nombres =Metodos.arrayNombreProductos(productos, btnBebida.getText());
-				
-				
-				
-				 aniadir.remove(botonesProductos);
-					
-				 botonesProductos=Metodos.generarBotonesProductos(aniadir, buttonGroup_1, nombres,nombreProductos);
-				 tipoSeleccionado=btnBebida.getText();
-				numProductos.setValue(0);
-			}
-		});
-		btnPostre.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				 nombres =Metodos.arrayNombreProductos(productos, btnPostre.getText());
-				
-				
-				
-				 aniadir.remove(botonesProductos);
-					
-				 botonesProductos=Metodos.generarBotonesProductos(aniadir, buttonGroup_1, nombres,nombreProductos);
-				 tipoSeleccionado=btnPostre.getText();
-				numProductos.setValue(0);
-			}
-		});
+
 		
 		//LISTENER BOTON OK
 				btnOk.addActionListener(new ActionListener() {
@@ -635,6 +422,36 @@ public class Tpv_V4 extends JFrame {
 						
 					}
 				});
+				//HACER EL BUCLE DE BOTONES DE LOS TIPOS DE COMIDA//
+				String[] nombreDeLosTiposDeProductos =Metodos.arrayTipoProductos();
+				for (int i = 0; i < nombreDeLosTiposDeProductos.length; i++) {
+					
+					JToggleButton btnTipo = new JToggleButton(nombreDeLosTiposDeProductos[i]);
+
+					buttonGroup.add(btnTipo);
+					btnTipo.setVerticalAlignment(SwingConstants.BOTTOM);
+					botonesTipo.add(btnTipo);
+					btnTipo.addActionListener(new ActionListener() {
+
+						public void actionPerformed(ActionEvent e) {
+							
+							System.out.println("EJECUTADO : ");
+							
+							
+							 nombres =Metodos.arrayNombreProductos(productos, btnTipo.getText());
+							 botonesProductos=Metodos.generarBotonesProductos(aniadir, buttonGroup_1, nombres,nombreProductos);
+							 tipoSeleccionado=btnTipo.getText();
+							 botonesProductos.revalidate();
+							 botonesProductos.repaint();
+							
+							
+							 
+						}
+					});
+					
+					
+					
+				}
 				
 		
 	}
