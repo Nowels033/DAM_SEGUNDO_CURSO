@@ -302,11 +302,10 @@ public class Tpv_V4 extends JFrame {
 		aniadir.add(btnVolver2);
 		
 		JSlider numProductos = new JSlider();
-		numProductos.setOrientation(SwingConstants.VERTICAL);
-		numProductos.setValue(1);
-		
 		numProductos.setPaintTicks(true);
 		numProductos.setPaintLabels(true);
+		numProductos.setOrientation(SwingConstants.VERTICAL);
+		numProductos.setValue(1);
 		numProductos.setMinimum(1);
 		numProductos.setBounds(727, 11, 240, 237);
 		aniadir.add(numProductos);
@@ -431,7 +430,7 @@ public class Tpv_V4 extends JFrame {
 
 				//comboBoxTipo.setSelectedIndex(-1);
 				//comboBoxProducto.setSelectedIndex(-1);
-				numProductos.setValue(1);
+				//numProductos.setValue(1);
 			}
 		});
 		
@@ -502,7 +501,7 @@ public class Tpv_V4 extends JFrame {
 		
 		btnPrimeros.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				numProductos.setValue(0);
+				//numProductos.setValue(0);
 				 nombres =Metodos.arrayNombreProductos(productos, btnPrimeros.getText());
 				
 				 aniadir.remove(botonesProductos);
@@ -599,6 +598,8 @@ public class Tpv_V4 extends JFrame {
 							
 							
 							modificar=false;
+						//	aniadirTabla[0]=
+							
 						}
 						//}
 						

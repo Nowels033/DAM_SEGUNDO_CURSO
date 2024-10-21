@@ -54,6 +54,7 @@ public class Metodos {
 		Producto p15 = new Producto("Hamburguesa", segundo, 8.0);
 		Producto p16 = new Producto("Hamburguesa XL", segundo, 9.0);
 		Producto p17 = new Producto("PIZZA 4 QUESOS", segundo, 12.0);
+		Producto p18 = new Producto("Pasta del Dia", primero, 6.0);
 
 		productos.add(p1);
 		productos.add(p2);
@@ -72,6 +73,7 @@ public class Metodos {
 		productos.add(p15);
 		productos.add(p16);
 		productos.add(p17);
+		productos.add(p18);
 
 		return productos;
 
