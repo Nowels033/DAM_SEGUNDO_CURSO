@@ -7,6 +7,9 @@ import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
+import java.util.HashMap;
 
 import javax.swing.ButtonGroup;
 import javax.swing.JOptionPane;
@@ -55,6 +58,8 @@ public class Metodos {
 		Producto p16 = new Producto("Hamburguesa XL", segundo, 9.0);
 		Producto p17 = new Producto("PIZZA 4 QUESOS", segundo, 12.0);
 		Producto p18 = new Producto("Pasta del Dia", primero, 6.0);
+		Producto p19 = new Producto("Bocata del Dia", segundo, 6.0);
+
 
 		productos.add(p1);
 		productos.add(p2);
@@ -74,6 +79,7 @@ public class Metodos {
 		productos.add(p16);
 		productos.add(p17);
 		productos.add(p18);
+		productos.add(p19);
 
 		return productos;
 
@@ -82,11 +88,11 @@ public class Metodos {
 	public static String[] arrayTipoProductos() {
 		String[] tipoProductos = new String[5];
 
-		tipoProductos[0] = "Bebida";
-		tipoProductos[1] = "Entrante";
-		tipoProductos[2] = "Postre";
-		tipoProductos[3] = "Primero";
-		tipoProductos[4] = "Segundo";
+		tipoProductos[0] = "Entrante";
+		tipoProductos[1] = "Primero";
+		tipoProductos[2] = "Segundo";
+		tipoProductos[3] = "Bebida";
+		tipoProductos[4] = "Postre";
 	
 
 		return tipoProductos;
@@ -264,7 +270,7 @@ public class Metodos {
 	        btnNombre.setVerticalAlignment(SwingConstants.BOTTOM);
 	        btnNombre.setText(nombres[i]);
 	        
-	        botonesProductos.add(btnNombre);
+	        botonesProductos.add(btnNombre,"botonesProductos");
 
 	      
 	        JToggleButton currentButton = btnNombre;
