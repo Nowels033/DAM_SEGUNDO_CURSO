@@ -98,33 +98,12 @@ public class Metodos {
 		return tipoProductos;
 	}
 
-//	public static String[] arrayNombreProductos(ArrayList<Producto> lista, String nombre) {
-//		
-//		int tamanio = 0;
-//		
-//		for (int i = 0; i < lista.size(); i++) {
-//			if (nombre.equalsIgnoreCase(lista.get(i).getTipo())) {
-//				
-//				tamanio++;
-//			}
-//		}
-//
-//		String[] nombres = new String[tamanio];
-//
-//		for (int i = 0; i < lista.size(); i++) {
-//			if (nombre.equalsIgnoreCase(lista.get(i).getTipo())) {
-//				nombres[i] = lista.get(i).getNombre();
-//			}
-//		}
-//
-//		return nombres;
-//
-//	}
+
 	public static String[] arrayNombreProductos(ArrayList<Producto> lista, String nombre) {
 
 	    int tamanio = 0;
 
-	    // Primero contamos cuántos productos coinciden con el tipo
+	  
 	    for (int i = 0; i < lista.size(); i++) {
 	        if (nombre.equalsIgnoreCase(lista.get(i).getTipo())) {
 	            tamanio++;
@@ -132,13 +111,12 @@ public class Metodos {
 	    }
 
 	    String[] nombres = new String[tamanio];
-	    int j = 0;  // Índice para el array nombres[]
-
-	    // Ahora llenamos el array solo con los nombres que coincidan
+	    int j = 0; 
+	   
 	    for (int i = 0; i < lista.size(); i++) {
 	        if (nombre.equalsIgnoreCase(lista.get(i).getTipo())) {
 	            nombres[j] = lista.get(i).getNombre();
-	            j++;  // Incrementamos j para no sobrescribir valores en el array
+	            j++; 
 	        }
 	    }
 
@@ -220,46 +198,15 @@ public class Metodos {
 
 	}
 
-//	public static JPanel generarBotonesProductos(JPanel contenedor, ButtonGroup buttonGroup_1, String[] nombres) {
-//
-//		JPanel botonesProductos = new JPanel();
-//		
-//		botonesProductos.setBounds(376, 50, 240, 328);
-//		contenedor.add(botonesProductos,"botonesProductos");
-//		
-//		//contenedor.remove(botonesProductos);
-//		//contenedor.add(botonesProductos,"botonesProductos");
-//		botonesProductos.setLayout(new GridLayout(3, 3, 0, 0));
-//
-//		JToggleButton btnNombre;
-//		for (int i = 0; i < nombres.length; i++) {
-//			btnNombre = new JToggleButton(nombres[i]);
-//			
-//			buttonGroup_1.add(btnNombre);
-//			btnNombre.setVerticalAlignment(SwingConstants.BOTTOM);
-//			btnNombre.setText(nombres[i]);
-//			
-//				
-//			
-//			botonesProductos.add(btnNombre);
-//			btnNombre.addActionListener(new ActionListener() {
-//				public void actionPerformed(ActionEvent e) {
-//					 
-//					 System.out.println("Button clicked: " + btnNombre.getText());
-//				}
-//			});
-//		}
-//		
-//		return botonesProductos;
-//
-//	}
+
 	public static JPanel generarBotonesProductos(JPanel contenedor, ButtonGroup buttonGroup_1, String[] nombres,Metodos nombre) {
 
 	    JPanel botonesProductos = new JPanel();
 	    
+	    //botonesProductos.removeAll();
 	    
 	    botonesProductos.setBounds(376, 50, 240, 328);
-	    contenedor.add(botonesProductos, "botonesProductos");
+	    contenedor.add(botonesProductos);//, "botonesProductos");
 	    
 	    botonesProductos.setLayout(new GridLayout(3, 3, 0, 0));
 
@@ -274,6 +221,7 @@ public class Metodos {
 
 	      
 	        JToggleButton currentButton = btnNombre;
+	       
 
 	        btnNombre.addActionListener(new ActionListener() {
 	            public void actionPerformed(ActionEvent e) {
@@ -282,6 +230,8 @@ public class Metodos {
 	                nombre.setNombre(currentButton.getText());
 	            }
 	        });
+	        botonesProductos.revalidate();
+	        botonesProductos.repaint();
 	    }
 	    
 	    return botonesProductos;

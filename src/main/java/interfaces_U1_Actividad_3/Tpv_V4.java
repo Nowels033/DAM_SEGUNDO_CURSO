@@ -205,48 +205,48 @@ public class Tpv_V4 extends JFrame {
 		tabla.add(totalIva);
 		totalIva.setColumns(10);
 		
-		JLabel lblNewLabel = new JLabel("TOTAL SIN IVA");
-		lblNewLabel.setBounds(48, 350, 86, 14);
-		tabla.add(lblNewLabel);
+		JLabel lblTotalSinIVA = new JLabel("TOTAL SIN IVA");
+		lblTotalSinIVA.setBounds(48, 350, 86, 14);
+		tabla.add(lblTotalSinIVA);
 		
 		JLabel lblTotalConIva = new JLabel("TOTAL CON IVA");
 		lblTotalConIva.setBounds(163, 350, 96, 14);
 		tabla.add(lblTotalConIva);
 		
-		JLabel lblNewLabel_1 = new JLabel("NOMBRE");
-		lblNewLabel_1.setHorizontalAlignment(SwingConstants.CENTER);
-		lblNewLabel_1.setFont(new Font("Stencil", Font.PLAIN, 11));
-		lblNewLabel_1.setForeground(new Color(0, 0, 0));
-		lblNewLabel_1.setBounds(69, 11, 79, 14);
-		tabla.add(lblNewLabel_1);
+		JLabel lblNombre = new JLabel("NOMBRE");
+		lblNombre.setHorizontalAlignment(SwingConstants.CENTER);
+		lblNombre.setFont(new Font("Stencil", Font.PLAIN, 11));
+		lblNombre.setForeground(new Color(0, 0, 0));
+		lblNombre.setBounds(69, 11, 79, 14);
+		tabla.add(lblNombre);
 		
-		JLabel lblNewLabel_1_1 = new JLabel("TIPO");
-		lblNewLabel_1_1.setHorizontalAlignment(SwingConstants.CENTER);
-		lblNewLabel_1_1.setForeground(Color.BLACK);
-		lblNewLabel_1_1.setFont(new Font("Stencil", Font.PLAIN, 11));
-		lblNewLabel_1_1.setBounds(210, 11, 79, 14);
-		tabla.add(lblNewLabel_1_1);
+		JLabel lblTipo = new JLabel("TIPO");
+		lblTipo.setHorizontalAlignment(SwingConstants.CENTER);
+		lblTipo.setForeground(Color.BLACK);
+		lblTipo.setFont(new Font("Stencil", Font.PLAIN, 11));
+		lblTipo.setBounds(210, 11, 79, 14);
+		tabla.add(lblTipo);
 		
-		JLabel lblNewLabel_1_1_1 = new JLabel("CANTIDAD");
-		lblNewLabel_1_1_1.setHorizontalAlignment(SwingConstants.CENTER);
-		lblNewLabel_1_1_1.setForeground(Color.BLACK);
-		lblNewLabel_1_1_1.setFont(new Font("Stencil", Font.PLAIN, 11));
-		lblNewLabel_1_1_1.setBounds(376, 11, 79, 14);
-		tabla.add(lblNewLabel_1_1_1);
+		JLabel lblCantidad = new JLabel("CANTIDAD");
+		lblCantidad.setHorizontalAlignment(SwingConstants.CENTER);
+		lblCantidad.setForeground(Color.BLACK);
+		lblCantidad.setFont(new Font("Stencil", Font.PLAIN, 11));
+		lblCantidad.setBounds(376, 11, 79, 14);
+		tabla.add(lblCantidad);
 		
-		JLabel lblNewLabel_1_1_1_1 = new JLabel("PRECIO SIN IVA");
-		lblNewLabel_1_1_1_1.setHorizontalAlignment(SwingConstants.CENTER);
-		lblNewLabel_1_1_1_1.setForeground(Color.BLACK);
-		lblNewLabel_1_1_1_1.setFont(new Font("Stencil", Font.PLAIN, 11));
-		lblNewLabel_1_1_1_1.setBounds(540, 11, 79, 14);
-		tabla.add(lblNewLabel_1_1_1_1);
+		JLabel lblPrecioSinIVA = new JLabel("PRECIO SIN IVA");
+		lblPrecioSinIVA.setHorizontalAlignment(SwingConstants.CENTER);
+		lblPrecioSinIVA.setForeground(Color.BLACK);
+		lblPrecioSinIVA.setFont(new Font("Stencil", Font.PLAIN, 11));
+		lblPrecioSinIVA.setBounds(540, 11, 79, 14);
+		tabla.add(lblPrecioSinIVA);
 		
-		JLabel lblNewLabel_1_1_1_1_1 = new JLabel("PRECIO CON IVA");
-		lblNewLabel_1_1_1_1_1.setHorizontalAlignment(SwingConstants.CENTER);
-		lblNewLabel_1_1_1_1_1.setForeground(Color.BLACK);
-		lblNewLabel_1_1_1_1_1.setFont(new Font("Stencil", Font.PLAIN, 11));
-		lblNewLabel_1_1_1_1_1.setBounds(677, 11, 114, 14);
-		tabla.add(lblNewLabel_1_1_1_1_1);
+		JLabel lblPrecioConIVA = new JLabel("PRECIO CON IVA");
+		lblPrecioConIVA.setHorizontalAlignment(SwingConstants.CENTER);
+		lblPrecioConIVA.setForeground(Color.BLACK);
+		lblPrecioConIVA.setFont(new Font("Stencil", Font.PLAIN, 11));
+		lblPrecioConIVA.setBounds(677, 11, 114, 14);
+		tabla.add(lblPrecioConIVA);
 		
 		JButton btnImprimir = new JButton("IMPRIMIR");
 		btnImprimir.setBounds(697, 363, 89, 23);
@@ -435,14 +435,14 @@ public class Tpv_V4 extends JFrame {
 
 						public void actionPerformed(ActionEvent e) {
 							
-							System.out.println("EJECUTADO : ");
-							
+							//System.out.println("EJECUTADO : ");
+							botonesProductos.removeAll();
 							
 							 nombres =Metodos.arrayNombreProductos(productos, btnTipo.getText());
 							 botonesProductos=Metodos.generarBotonesProductos(aniadir, buttonGroup_1, nombres,nombreProductos);
 							 tipoSeleccionado=btnTipo.getText();
 							 botonesProductos.revalidate();
-							 botonesProductos.repaint();
+							// botonesProductos.repaint();
 							
 							
 							 
