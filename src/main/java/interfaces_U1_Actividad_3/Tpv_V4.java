@@ -284,19 +284,21 @@ public class Tpv_V4 extends JFrame {
 		numProductos.setOrientation(SwingConstants.VERTICAL);
 		numProductos.setValue(1);
 		numProductos.setMinimum(1);
-		numProductos.setBounds(727, 11, 240, 237);
+		numProductos.setBounds(801, 11, 56, 292);
 		aniadir.add(numProductos);
 		
 		JLabel lblProducto = new JLabel("1");
-		lblProducto.setFont(new Font("Sitka Small", Font.BOLD, 13));
+		lblProducto.setFont(new Font("Dialog", Font.BOLD, 17));
 		lblProducto.setHorizontalAlignment(SwingConstants.CENTER);
-		lblProducto.setBounds(665, 203, 46, 45);
+		lblProducto.setBounds(793, 314, 64, 59);
 		aniadir.add(lblProducto);
 		
 		JPanel botonesTipo = new JPanel();
-		botonesTipo.setBounds(10, 50, 343, 428);
+		botonesTipo.setBounds(10, 11, 343, 467);
 		aniadir.add(botonesTipo,"botonesTipo");
 		botonesTipo.setLayout(new GridLayout(0, 1, 0, 0));
+		
+		
 		
 	
 
@@ -424,13 +426,18 @@ public class Tpv_V4 extends JFrame {
 				});
 				//HACER EL BUCLE DE BOTONES DE LOS TIPOS DE COMIDA//
 				String[] nombreDeLosTiposDeProductos =Metodos.arrayTipoProductos();
+				ArrayList<ImageIcon> iconosTipoProducto = Metodos.arrayListIconosTipoDeProducto(); 
 				for (int i = 0; i < nombreDeLosTiposDeProductos.length; i++) {
 					
 					JToggleButton btnTipo = new JToggleButton(nombreDeLosTiposDeProductos[i]);
 
 					buttonGroup.add(btnTipo);
 					btnTipo.setVerticalAlignment(SwingConstants.BOTTOM);
+					btnTipo.setIcon(iconosTipoProducto.get(i));
+					btnTipo.setHorizontalTextPosition(SwingConstants.CENTER);
+					btnTipo.setVerticalTextPosition(SwingConstants.BOTTOM);
 					botonesTipo.add(btnTipo);
+					
 					btnTipo.addActionListener(new ActionListener() {
 
 						public void actionPerformed(ActionEvent e) {

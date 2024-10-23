@@ -12,6 +12,8 @@ import java.util.Map;
 import java.util.HashMap;
 
 import javax.swing.ButtonGroup;
+import javax.swing.ImageIcon;
+import javax.swing.JButton;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTable;
@@ -205,7 +207,7 @@ public class Metodos {
 	    
 	    //botonesProductos.removeAll();
 	    
-	    botonesProductos.setBounds(376, 50, 240, 328);
+	    botonesProductos.setBounds(380, 11, 403, 368);
 	    contenedor.add(botonesProductos);//, "botonesProductos");
 	    
 	    botonesProductos.setLayout(new GridLayout(3, 3, 0, 0));
@@ -216,8 +218,10 @@ public class Metodos {
 	        buttonGroup_1.add(btnNombre);
 	        btnNombre.setVerticalAlignment(SwingConstants.BOTTOM);
 	        btnNombre.setText(nombres[i]);
-	        
+	        Metodos.iconosNombreDeProducto(btnNombre, nombres[i]);
 	        botonesProductos.add(btnNombre,"botonesProductos");
+	        
+	        
 
 	      
 	        JToggleButton currentButton = btnNombre;
@@ -237,6 +241,189 @@ public class Metodos {
 	    return botonesProductos;
 	}
 
+	public static ArrayList<ImageIcon> arrayListIconosTipoDeProducto() {
+		
+		ArrayList<ImageIcon> iconos = new ArrayList<ImageIcon>();
+		
+		
+		ClassLoader classLoader = Metodos.class.getClassLoader();
+		
+		ImageIcon iconoEntrante = new ImageIcon(classLoader.getResource("entrante.png"));
+		iconoEntrante.setImage(iconoEntrante.getImage().getScaledInstance(100, 50, java.awt.Image.SCALE_SMOOTH));
+		
+		ImageIcon iconoPrimerPlato = new ImageIcon(classLoader.getResource("primerPlato.png"));
+		iconoPrimerPlato.setImage(iconoPrimerPlato.getImage().getScaledInstance(100, 50, java.awt.Image.SCALE_SMOOTH));
+		
+		ImageIcon iconoSegundoPlato = new ImageIcon(classLoader.getResource("segundoPlato.png"));
+		iconoSegundoPlato.setImage(iconoSegundoPlato.getImage().getScaledInstance(100, 50, java.awt.Image.SCALE_SMOOTH));
+		
+		ImageIcon iconoBebida = new ImageIcon(classLoader.getResource("bebida.png"));
+		iconoBebida.setImage(iconoBebida.getImage().getScaledInstance(100, 50, java.awt.Image.SCALE_SMOOTH));
+		
+		ImageIcon iconoPostre = new ImageIcon(classLoader.getResource("postre.png"));
+		iconoPostre.setImage(iconoPostre.getImage().getScaledInstance(100, 50, java.awt.Image.SCALE_SMOOTH));
+		
+		iconos.add(iconoEntrante);
+		iconos.add(iconoPrimerPlato);
+		iconos.add(iconoSegundoPlato);
+		iconos.add(iconoBebida);
+		iconos.add(iconoPostre);
+		
+		
+		
+		return iconos;
+		
+	}
+	
+	public static void iconosNombreDeProducto(JToggleButton btn,String nombreProducto) {
+		
+		ArrayList<ImageIcon> iconos = new ArrayList<ImageIcon>();
+		
+		
+		ClassLoader classLoader = Metodos.class.getClassLoader();
+		
+		ImageIcon iconoBravas = new ImageIcon(classLoader.getResource("patatasBravas.png"));
+		iconoBravas.setImage(iconoBravas.getImage().getScaledInstance(100, 50, java.awt.Image.SCALE_SMOOTH));
+		
+		ImageIcon iconoEnsalada = new ImageIcon(classLoader.getResource("ensalada.png"));
+		iconoEnsalada.setImage(iconoEnsalada.getImage().getScaledInstance(100, 50, java.awt.Image.SCALE_SMOOTH));
+		
+		ImageIcon iconoCroquetas = new ImageIcon(classLoader.getResource("croqueta.png"));
+		iconoCroquetas.setImage(iconoCroquetas.getImage().getScaledInstance(100, 50, java.awt.Image.SCALE_SMOOTH));
+		
+		ImageIcon iconoBocataBeicon = new ImageIcon(classLoader.getResource("bocataBeicon.png"));
+		iconoBocataBeicon.setImage(iconoBocataBeicon.getImage().getScaledInstance(100, 50, java.awt.Image.SCALE_SMOOTH));
+		
+		ImageIcon iconoBocataTortilla = new ImageIcon(classLoader.getResource("tortilla.png"));
+		iconoBocataTortilla.setImage(iconoBocataTortilla.getImage().getScaledInstance(100, 50, java.awt.Image.SCALE_SMOOTH));
+		
+		ImageIcon iconoSopa = new ImageIcon(classLoader.getResource("sopa.png"));
+		iconoSopa.setImage(iconoSopa.getImage().getScaledInstance(100, 50, java.awt.Image.SCALE_SMOOTH));
+		
+		ImageIcon iconoPasta = new ImageIcon(classLoader.getResource("pasta.png"));
+		iconoPasta.setImage(iconoPasta.getImage().getScaledInstance(100, 50, java.awt.Image.SCALE_SMOOTH));
+		
+		ImageIcon iconoEscapole = new ImageIcon(classLoader.getResource("escalopeDePollo.png"));
+		iconoEscapole.setImage(iconoEscapole.getImage().getScaledInstance(100, 50, java.awt.Image.SCALE_SMOOTH));
+		
+		ImageIcon iconoHamburguesa = new ImageIcon(classLoader.getResource("hamburguesa.png"));
+		iconoHamburguesa.setImage(iconoHamburguesa.getImage().getScaledInstance(100, 50, java.awt.Image.SCALE_SMOOTH));
+		
+		ImageIcon iconoHamburguesaXL = new ImageIcon(classLoader.getResource("hamburguesaXL.png"));
+		iconoHamburguesaXL.setImage(iconoHamburguesaXL.getImage().getScaledInstance(100, 50, java.awt.Image.SCALE_SMOOTH));
+		
+		ImageIcon iconoPizza = new ImageIcon(classLoader.getResource("pizza.png"));
+		iconoPizza.setImage(iconoPizza.getImage().getScaledInstance(100, 50, java.awt.Image.SCALE_SMOOTH));
+		
+		ImageIcon iconoBocataDelDia = new ImageIcon(classLoader.getResource("bocataDelDia.png"));
+		iconoBocataDelDia.setImage(iconoBocataDelDia.getImage().getScaledInstance(100, 50, java.awt.Image.SCALE_SMOOTH));
+		
+		ImageIcon iconoCerveza = new ImageIcon(classLoader.getResource("cerveza.png"));
+		iconoCerveza.setImage(iconoCerveza.getImage().getScaledInstance(100, 50, java.awt.Image.SCALE_SMOOTH));
+		
+		ImageIcon iconoAgua = new ImageIcon(classLoader.getResource("agua-mineral.png"));
+		iconoAgua.setImage(iconoAgua.getImage().getScaledInstance(100, 50, java.awt.Image.SCALE_SMOOTH));
+		
+		ImageIcon iconoRefresco = new ImageIcon(classLoader.getResource("refresco.png"));
+		iconoRefresco.setImage(iconoRefresco.getImage().getScaledInstance(100, 50, java.awt.Image.SCALE_SMOOTH));
+		
+		iconos.add(iconoBravas);
+		iconos.add(iconoEnsalada);
+		iconos.add(iconoCroquetas);
+		iconos.add(iconoBocataBeicon);
+		iconos.add(iconoBocataTortilla);
+		iconos.add(iconoSopa);
+		iconos.add(iconoPasta);
+		iconos.add(iconoEscapole);
+		iconos.add(iconoHamburguesa);
+		iconos.add(iconoHamburguesaXL);
+		iconos.add(iconoPizza);
+		iconos.add(iconoBocataDelDia);
+		iconos.add(iconoCerveza);
+		iconos.add(iconoAgua);
+		iconos.add(iconoRefresco);
+		
+		if (nombreProducto.equalsIgnoreCase("Racion De Patatas Bravas")) {
+			btn.setIcon(iconoBravas);
+			btn.setHorizontalTextPosition(SwingConstants.CENTER);
+			btn.setVerticalTextPosition(SwingConstants.BOTTOM);
+		}
+		if (nombreProducto.equalsIgnoreCase("Ensalada De Peraltas")) {
+			btn.setIcon(iconoEnsalada);
+			btn.setHorizontalTextPosition(SwingConstants.CENTER);
+			btn.setVerticalTextPosition(SwingConstants.BOTTOM);
+		}
+		if (nombreProducto.equalsIgnoreCase("Croquetas")) {
+			btn.setIcon(iconoCroquetas);
+			btn.setHorizontalTextPosition(SwingConstants.CENTER);
+			btn.setVerticalTextPosition(SwingConstants.BOTTOM);
+		}
+		if (nombreProducto.equalsIgnoreCase("Bocata Beicon Queso")) {
+			btn.setIcon(iconoBocataBeicon);
+			btn.setHorizontalTextPosition(SwingConstants.CENTER);
+			btn.setVerticalTextPosition(SwingConstants.BOTTOM);
+		}
+		if (nombreProducto.equalsIgnoreCase("Bocata De Tortilla")) {
+			btn.setIcon(iconoBocataTortilla);
+			btn.setHorizontalTextPosition(SwingConstants.CENTER);
+			btn.setVerticalTextPosition(SwingConstants.BOTTOM);
+		}
+		if (nombreProducto.equalsIgnoreCase("Sopa")) {
+			btn.setIcon(iconoSopa);
+			btn.setHorizontalTextPosition(SwingConstants.CENTER);
+			btn.setVerticalTextPosition(SwingConstants.BOTTOM);
+		}
+		if (nombreProducto.equalsIgnoreCase("Pasta del Dia")) {
+			btn.setIcon(iconoPasta);
+			btn.setHorizontalTextPosition(SwingConstants.CENTER);
+			btn.setVerticalTextPosition(SwingConstants.BOTTOM);
+		}
+		if (nombreProducto.equalsIgnoreCase("Escalope De Pollo")) {
+			btn.setIcon(iconoEscapole);
+			btn.setHorizontalTextPosition(SwingConstants.CENTER);
+			btn.setVerticalTextPosition(SwingConstants.BOTTOM);
+		}
+		
+		if (nombreProducto.equalsIgnoreCase("Hamburguesa")) {
+			btn.setIcon(iconoHamburguesa);
+			btn.setHorizontalTextPosition(SwingConstants.CENTER);
+			btn.setVerticalTextPosition(SwingConstants.BOTTOM);
+		}
+		if (nombreProducto.equalsIgnoreCase("Hamburguesa XL")) {
+			btn.setIcon(iconoHamburguesaXL);
+			btn.setHorizontalTextPosition(SwingConstants.CENTER);
+			btn.setVerticalTextPosition(SwingConstants.BOTTOM);
+		}
+		if (nombreProducto.equalsIgnoreCase("PIZZA 4 QUESOS")) {
+			btn.setIcon(iconoPizza);
+			btn.setHorizontalTextPosition(SwingConstants.CENTER);
+			btn.setVerticalTextPosition(SwingConstants.BOTTOM);
+		}
+		if (nombreProducto.equalsIgnoreCase("Bocata del Dia")) {
+			btn.setIcon(iconoBocataDelDia);
+			btn.setHorizontalTextPosition(SwingConstants.CENTER);
+			btn.setVerticalTextPosition(SwingConstants.BOTTOM);
+		}
+		
+		if (nombreProducto.equalsIgnoreCase("Cerveza")) {
+			btn.setIcon(iconoCerveza);
+			btn.setHorizontalTextPosition(SwingConstants.CENTER);
+			btn.setVerticalTextPosition(SwingConstants.BOTTOM);
+		}
+		if (nombreProducto.equalsIgnoreCase("Agua")) {
+			btn.setIcon(iconoAgua);
+			btn.setHorizontalTextPosition(SwingConstants.CENTER);
+			btn.setVerticalTextPosition(SwingConstants.BOTTOM);
+		}
+		if (nombreProducto.equalsIgnoreCase("Refresco")) {
+			btn.setIcon(iconoRefresco);
+			btn.setHorizontalTextPosition(SwingConstants.CENTER);
+			btn.setVerticalTextPosition(SwingConstants.BOTTOM);
+		}
+		
+		
+	}
+	
 	public String getNombre() {
 		return nombre;
 	}
