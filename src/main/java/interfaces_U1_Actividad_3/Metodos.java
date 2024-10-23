@@ -283,49 +283,64 @@ public class Metodos {
 		ClassLoader classLoader = Metodos.class.getClassLoader();
 		
 		ImageIcon iconoBravas = new ImageIcon(classLoader.getResource("patatasBravas.png"));
-		iconoBravas.setImage(iconoBravas.getImage().getScaledInstance(100, 50, java.awt.Image.SCALE_SMOOTH));
+		iconoBravas.setImage(iconoBravas.getImage().getScaledInstance(100, 75, java.awt.Image.SCALE_SMOOTH));
 		
 		ImageIcon iconoEnsalada = new ImageIcon(classLoader.getResource("ensalada.png"));
-		iconoEnsalada.setImage(iconoEnsalada.getImage().getScaledInstance(100, 50, java.awt.Image.SCALE_SMOOTH));
+		iconoEnsalada.setImage(iconoEnsalada.getImage().getScaledInstance(100, 75, java.awt.Image.SCALE_SMOOTH));
 		
 		ImageIcon iconoCroquetas = new ImageIcon(classLoader.getResource("croqueta.png"));
-		iconoCroquetas.setImage(iconoCroquetas.getImage().getScaledInstance(100, 50, java.awt.Image.SCALE_SMOOTH));
+		iconoCroquetas.setImage(iconoCroquetas.getImage().getScaledInstance(100, 75, java.awt.Image.SCALE_SMOOTH));
 		
 		ImageIcon iconoBocataBeicon = new ImageIcon(classLoader.getResource("bocataBeicon.png"));
-		iconoBocataBeicon.setImage(iconoBocataBeicon.getImage().getScaledInstance(100, 50, java.awt.Image.SCALE_SMOOTH));
+		iconoBocataBeicon.setImage(iconoBocataBeicon.getImage().getScaledInstance(100, 75, java.awt.Image.SCALE_SMOOTH));
 		
 		ImageIcon iconoBocataTortilla = new ImageIcon(classLoader.getResource("tortilla.png"));
-		iconoBocataTortilla.setImage(iconoBocataTortilla.getImage().getScaledInstance(100, 50, java.awt.Image.SCALE_SMOOTH));
+		iconoBocataTortilla.setImage(iconoBocataTortilla.getImage().getScaledInstance(100, 75, java.awt.Image.SCALE_SMOOTH));
 		
 		ImageIcon iconoSopa = new ImageIcon(classLoader.getResource("sopa.png"));
-		iconoSopa.setImage(iconoSopa.getImage().getScaledInstance(100, 50, java.awt.Image.SCALE_SMOOTH));
+		iconoSopa.setImage(iconoSopa.getImage().getScaledInstance(100, 75, java.awt.Image.SCALE_SMOOTH));
 		
 		ImageIcon iconoPasta = new ImageIcon(classLoader.getResource("pasta.png"));
-		iconoPasta.setImage(iconoPasta.getImage().getScaledInstance(100, 50, java.awt.Image.SCALE_SMOOTH));
+		iconoPasta.setImage(iconoPasta.getImage().getScaledInstance(100, 75, java.awt.Image.SCALE_SMOOTH));
 		
 		ImageIcon iconoEscapole = new ImageIcon(classLoader.getResource("escalopeDePollo.png"));
-		iconoEscapole.setImage(iconoEscapole.getImage().getScaledInstance(100, 50, java.awt.Image.SCALE_SMOOTH));
+		iconoEscapole.setImage(iconoEscapole.getImage().getScaledInstance(100, 75, java.awt.Image.SCALE_SMOOTH));
 		
 		ImageIcon iconoHamburguesa = new ImageIcon(classLoader.getResource("hamburguesa.png"));
-		iconoHamburguesa.setImage(iconoHamburguesa.getImage().getScaledInstance(100, 50, java.awt.Image.SCALE_SMOOTH));
+		iconoHamburguesa.setImage(iconoHamburguesa.getImage().getScaledInstance(100, 75, java.awt.Image.SCALE_SMOOTH));
 		
 		ImageIcon iconoHamburguesaXL = new ImageIcon(classLoader.getResource("hamburguesaXL.png"));
-		iconoHamburguesaXL.setImage(iconoHamburguesaXL.getImage().getScaledInstance(100, 50, java.awt.Image.SCALE_SMOOTH));
+		iconoHamburguesaXL.setImage(iconoHamburguesaXL.getImage().getScaledInstance(100, 75, java.awt.Image.SCALE_SMOOTH));
 		
 		ImageIcon iconoPizza = new ImageIcon(classLoader.getResource("pizza.png"));
-		iconoPizza.setImage(iconoPizza.getImage().getScaledInstance(100, 50, java.awt.Image.SCALE_SMOOTH));
+		iconoPizza.setImage(iconoPizza.getImage().getScaledInstance(100, 75, java.awt.Image.SCALE_SMOOTH));
 		
 		ImageIcon iconoBocataDelDia = new ImageIcon(classLoader.getResource("bocataDelDia.png"));
-		iconoBocataDelDia.setImage(iconoBocataDelDia.getImage().getScaledInstance(100, 50, java.awt.Image.SCALE_SMOOTH));
+		iconoBocataDelDia.setImage(iconoBocataDelDia.getImage().getScaledInstance(100, 75, java.awt.Image.SCALE_SMOOTH));
 		
 		ImageIcon iconoCerveza = new ImageIcon(classLoader.getResource("cerveza.png"));
-		iconoCerveza.setImage(iconoCerveza.getImage().getScaledInstance(100, 50, java.awt.Image.SCALE_SMOOTH));
+		iconoCerveza.setImage(iconoCerveza.getImage().getScaledInstance(100, 75, java.awt.Image.SCALE_SMOOTH));
 		
 		ImageIcon iconoAgua = new ImageIcon(classLoader.getResource("agua-mineral.png"));
-		iconoAgua.setImage(iconoAgua.getImage().getScaledInstance(100, 50, java.awt.Image.SCALE_SMOOTH));
+		iconoAgua.setImage(iconoAgua.getImage().getScaledInstance(100, 75, java.awt.Image.SCALE_SMOOTH));
 		
 		ImageIcon iconoRefresco = new ImageIcon(classLoader.getResource("refresco.png"));
-		iconoRefresco.setImage(iconoRefresco.getImage().getScaledInstance(100, 50, java.awt.Image.SCALE_SMOOTH));
+		iconoRefresco.setImage(iconoRefresco.getImage().getScaledInstance(100, 75, java.awt.Image.SCALE_SMOOTH));
+		
+		ImageIcon iconoZumo = new ImageIcon(classLoader.getResource("zumo.png"));
+		iconoZumo.setImage(iconoZumo.getImage().getScaledInstance(100, 75, java.awt.Image.SCALE_SMOOTH));
+		
+		ImageIcon iconoTarta = new ImageIcon(classLoader.getResource("tarta.png"));
+		iconoTarta.setImage(iconoTarta.getImage().getScaledInstance(100, 75, java.awt.Image.SCALE_SMOOTH));
+		
+		ImageIcon iconoHelado = new ImageIcon(classLoader.getResource("helado.png"));
+		iconoHelado.setImage(iconoHelado.getImage().getScaledInstance(100, 75, java.awt.Image.SCALE_SMOOTH));
+		
+		ImageIcon iconoFruta = new ImageIcon(classLoader.getResource("fruta.png"));
+		iconoFruta.setImage(iconoFruta.getImage().getScaledInstance(100, 75, java.awt.Image.SCALE_SMOOTH));
+		
+		ImageIcon iconoCafe = new ImageIcon(classLoader.getResource("cafe.png"));
+		iconoCafe.setImage(iconoCafe.getImage().getScaledInstance(100, 75, java.awt.Image.SCALE_SMOOTH));
 		
 		iconos.add(iconoBravas);
 		iconos.add(iconoEnsalada);
@@ -342,6 +357,12 @@ public class Metodos {
 		iconos.add(iconoCerveza);
 		iconos.add(iconoAgua);
 		iconos.add(iconoRefresco);
+		iconos.add(iconoZumo);
+		iconos.add(iconoTarta);
+		iconos.add(iconoHelado);
+		iconos.add(iconoFruta);
+		iconos.add(iconoCafe);
+		
 		
 		if (nombreProducto.equalsIgnoreCase("Racion De Patatas Bravas")) {
 			btn.setIcon(iconoBravas);
@@ -410,11 +431,13 @@ public class Metodos {
 			btn.setHorizontalTextPosition(SwingConstants.CENTER);
 			btn.setVerticalTextPosition(SwingConstants.BOTTOM);
 		}
+		
 		if (nombreProducto.equalsIgnoreCase("Agua")) {
 			btn.setIcon(iconoAgua);
 			btn.setHorizontalTextPosition(SwingConstants.CENTER);
 			btn.setVerticalTextPosition(SwingConstants.BOTTOM);
 		}
+		
 		if (nombreProducto.equalsIgnoreCase("Refresco")) {
 			btn.setIcon(iconoRefresco);
 			btn.setHorizontalTextPosition(SwingConstants.CENTER);
@@ -422,6 +445,35 @@ public class Metodos {
 		}
 		
 		
+		if (nombreProducto.equalsIgnoreCase("Zumo")) {
+			btn.setIcon(iconoZumo);
+			btn.setHorizontalTextPosition(SwingConstants.CENTER);
+			btn.setVerticalTextPosition(SwingConstants.BOTTOM);
+		}
+		
+		if (nombreProducto.equalsIgnoreCase("Fruta")) {
+			btn.setIcon(iconoFruta);
+			btn.setHorizontalTextPosition(SwingConstants.CENTER);
+			btn.setVerticalTextPosition(SwingConstants.BOTTOM);
+		}
+		
+		if (nombreProducto.equalsIgnoreCase("Tarta")) {
+			btn.setIcon(iconoTarta);
+			btn.setHorizontalTextPosition(SwingConstants.CENTER);
+			btn.setVerticalTextPosition(SwingConstants.BOTTOM);
+		}
+		
+		if (nombreProducto.equalsIgnoreCase("Helado")) {
+			btn.setIcon(iconoHelado);
+			btn.setHorizontalTextPosition(SwingConstants.CENTER);
+			btn.setVerticalTextPosition(SwingConstants.BOTTOM);
+		}
+		
+		if (nombreProducto.equalsIgnoreCase("Cafe")) {
+			btn.setIcon(iconoCafe);
+			btn.setHorizontalTextPosition(SwingConstants.CENTER);
+			btn.setVerticalTextPosition(SwingConstants.BOTTOM);
+		}
 	}
 	
 	public String getNombre() {
