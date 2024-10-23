@@ -40,6 +40,7 @@ public class Tpv_V4 extends JFrame {
 	private JTable tablaMesas;
 	private String nombreProducto = "";
 	private String tipoSeleccionado = "";
+	private int fila=0;
 	private boolean modificar=false;
 	private int numeroDeModelo = 0;
 	private JTextField totalSinIva;
@@ -48,7 +49,8 @@ public class Tpv_V4 extends JFrame {
 	private final ButtonGroup buttonGroup_1 = new ButtonGroup();
 	private String[] nombres;
 	private JPanel botonesProductos=new JPanel();
-	private Metodos nombreProductos=new Metodos(); 
+	private Metodos nombreProductos=new Metodos();
+	private String tipoModificar="",productoModificar="",cantidadModificar="";
 
 	/**
 	 * Launch the application.
@@ -345,6 +347,7 @@ public class Tpv_V4 extends JFrame {
 		//LISTENER BOTON OK
 				btnOk.addActionListener(new ActionListener() {
 					public void actionPerformed(ActionEvent e) {
+						
 						if(!modificar ) {
 							String precioString = "";
 							for (int i = 0; i < productos.size(); i++) {
@@ -383,36 +386,70 @@ public class Tpv_V4 extends JFrame {
 								
 								cardLayout.show(contentPane, "tabla");
 						}
-						else {
+						
+						
+						if(modificar ) {
+							
+							String precioString = "";
+							for (int i = 0; i < productos.size(); i++) {
+								
+								if (productos.get(i).getNombre().equalsIgnoreCase(productoModificar)) {
+									precioString = productos.get(i).getPrecio()+"";
+								}
+							}
+							
+							String[] modificarTabla = new String[5];
+							modificarTabla[0]= productoModificar;
+							modificarTabla[1]=tipoModificar;
+							modificarTabla[2]=cantidadModificar;
+							
+							double precio = Double.parseDouble(precioString);
+							double cantidadDouble =Double.parseDouble(modificarTabla[2]);	
+							double total = precio*cantidadDouble;
+						
+							modificarTabla[3]=String.valueOf(total);
+							
+							double porcentaje = 21;
+							double totalConIva= (total*porcentaje/100)+total;
+							
+							modificarTabla[4]=String.valueOf(totalConIva);
 							
 							
+							
+							Metodos.seleccionarModeloDeTabla(numeroDeModelo, modelos).insertRow(fila, modificarTabla);
+							
+							totalSinIva.setText(Metodos.sumarColumna(tablaMesas, 3)+" €");
+							totalIva.setText(Metodos.sumarColumna(tablaMesas, 4)+" €");
+							
+							buttonGroup.clearSelection();
+							buttonGroup_1.clearSelection();
 							modificar=false;
-						//	aniadirTabla[0]=
+							
+							cardLayout.show(contentPane, "tabla");
+							
+						
 							
 						}
-						//}
 						
-//						else {
-//							JOptionPane.showMessageDialog(contentPane, "SELECCIONA TODOS LOS CAMPOS!!!!");
-//						}
 						
-					
 					}
 				});
 				
 				//LISTENER DE BOTON MODIFICAR
+				
+				
 				btnModificar.addActionListener(new ActionListener() {
 					public void actionPerformed(ActionEvent e) {
-						String tipo="",producto="",cantidad="";
-						int fila =tablaMesas.getSelectedRow();
+						
+						 fila =tablaMesas.getSelectedRow();
 						if (fila >= 0) {
 							
 							modificar=true;
-							producto=(String) Metodos.seleccionarModeloDeTabla(numeroDeModelo, modelos).getValueAt(fila, 0);
-							tipo=(String) Metodos.seleccionarModeloDeTabla(numeroDeModelo, modelos).getValueAt(fila, 1);
-							cantidad=(String) Metodos.seleccionarModeloDeTabla(numeroDeModelo, modelos).getValueAt(fila, 2);
+							productoModificar=(String) Metodos.seleccionarModeloDeTabla(numeroDeModelo, modelos).getValueAt(fila, 0);
+							tipoModificar=(String) Metodos.seleccionarModeloDeTabla(numeroDeModelo, modelos).getValueAt(fila, 1);
+							cantidadModificar=(String) Metodos.seleccionarModeloDeTabla(numeroDeModelo, modelos).getValueAt(fila, 2);
 							
-							numProductos.setValue(Integer.parseInt(cantidad));
+							numProductos.setValue(Integer.parseInt(cantidadModificar));
 							
 							cardLayout.show(contentPane, "añadir");
 							
