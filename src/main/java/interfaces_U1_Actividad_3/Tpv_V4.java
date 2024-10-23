@@ -38,8 +38,8 @@ public class Tpv_V4 extends JFrame {
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
 	private JTable tablaMesas;
-	private String nombreProducto = "";
-	private String tipoSeleccionado = "";
+	private String nombreProducto = " ";
+	private String tipoSeleccionado = " ";
 	private int fila=0;
 	private boolean modificar=false;
 	private int numeroDeModelo = 0;
@@ -50,7 +50,7 @@ public class Tpv_V4 extends JFrame {
 	private String[] nombres;
 	private JPanel botonesProductos=new JPanel();
 	private Metodos nombreProductos=new Metodos();
-	private String tipoModificar="",productoModificar="",cantidadModificar="";
+	private String tipoModificar=" ",productoModificar=" ",cantidadModificar=" ";
 
 	/**
 	 * Launch the application.
@@ -87,6 +87,7 @@ public class Tpv_V4 extends JFrame {
 		Object[][] data = { {},
 
 		};
+	
 
 		DefaultTableModel modelMesa1 = new DefaultTableModel(data, columnNames);
 		DefaultTableModel modelMesa2 = new DefaultTableModel(data, columnNames);
