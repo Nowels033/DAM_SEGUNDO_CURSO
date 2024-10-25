@@ -27,7 +27,7 @@ public class Mesa extends JFrame {
 	private int numMesas = 0;
 	private JToggleButton[] botonesMesas;
 	private DefaultTableModel[] modelosDeTabla;
-	private Comanda dialogoComanda; 
+	private Comanda dialogoComanda;
 
 	/**
 	 * Launch the application.
