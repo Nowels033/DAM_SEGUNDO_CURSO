@@ -34,7 +34,7 @@ public class Comanda extends JDialog {
 		setBounds(100, 100, 1067, 524);
 		getContentPane().setLayout(new BorderLayout());
 		
-		dialogoMenuDeProductos= new MenuDeProductos(this);
+		dialogoMenuDeProductos= new MenuDeProductos(this,modeloTabla);
 		dialogoMenuDeProductos.setVisible(false);
 		
 		

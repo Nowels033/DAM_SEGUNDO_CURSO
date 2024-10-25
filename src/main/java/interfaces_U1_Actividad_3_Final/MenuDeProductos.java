@@ -10,6 +10,8 @@ import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+import javax.swing.table.DefaultTableModel;
+
 import java.awt.GridLayout;
 import java.awt.CardLayout;
 import javax.swing.JToggleButton;
@@ -33,13 +35,14 @@ public class MenuDeProductos extends JDialog {
 	private final String[] productosSeleccionados = new String[3];
 	private JTextField cantidad;
 	private final ButtonGroup buttonGroup = new ButtonGroup();
+	private final ButtonGroup buttonGroup_1 = new ButtonGroup();
 
 	/**
 	 * Launch the application.
 	 */
 	public static void main(String[] args) {
 		try {
-			MenuDeProductos dialog = new MenuDeProductos(null);
+			MenuDeProductos dialog = new MenuDeProductos(null,null);
 			dialog.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
 			dialog.setVisible(true);
 		} catch (Exception e) {
@@ -50,7 +53,7 @@ public class MenuDeProductos extends JDialog {
 	/**
 	 * Create the dialog.
 	 */
-	public MenuDeProductos(JDialog frame) {
+	public MenuDeProductos(JDialog frame,DefaultTableModel modeloTabla) {
 		super(frame, "MENU DE PRODUCTOS", true);
 		setLocationRelativeTo(frame);
 		setBounds(100, 100, 1067, 524);
@@ -66,15 +69,26 @@ public class MenuDeProductos extends JDialog {
 		
 
 		JPanel productos = new JPanel();
-		productos.setBounds(209, 11, 775, 441);
+		productos.setBounds(225, 11, 748, 441);
 		contentPanel.add(productos);
 
 		CardLayout cardLayout = new CardLayout(0, 0);
 		productos.setLayout(cardLayout);
 
-		JPanel panel = new JPanel();
-		productos.add(panel, "productos");
-		panel.setLayout(new GridLayout(1, 0, 0, 0));
+		JPanel botonesProductos = new JPanel();
+		productos.add(botonesProductos, "productos");
+		botonesProductos.setLayout(new GridLayout(0, 3, 0, 0));
+		
+		JButton btnNombreProducto = new JButton("Producto");
+		btnNombreProducto.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				
+				
+			}
+		});
+		buttonGroup_1.add(btnNombreProducto);
+		botonesProductos.add(btnNombreProducto);
 
 		//////////////////////////////////////////////////
 		//////////////////////////////////////////////////
@@ -180,6 +194,22 @@ public class MenuDeProductos extends JDialog {
 	public String[] getProductosSeleccionados() {
 		return productosSeleccionados;
 	}
+	
+	public JTextField getCantidad() {
+		return cantidad;
+	}
+
+	public void setCantidad(JTextField cantidad) {
+		this.cantidad = cantidad;
+	}
+
+	public ButtonGroup getButtonGroup() {
+		return buttonGroup;
+	}
+
+	public ButtonGroup getButtonGroup_1() {
+		return buttonGroup_1;
+	}
 
 	private  void generarBotonesTipoDeProducto(ButtonGroup buttonGroupTipoComida, JPanel botonesTipoComida) {
 
@@ -212,6 +242,31 @@ public class MenuDeProductos extends JDialog {
         getOwner().setVisible(true); 
         
     }
+	
+	
+	private void generarBotonesNombresProductos(ArrayList<Producto> arrayDeProductos,ButtonGroup buttonGroup_1,JPanel botonesProductos ) {
+		
+		
+		
+		
+		
+		
+		JButton btnNombreProducto = new JButton("Producto");
+		btnNombreProducto.addActionListener(new ActionListener() {
+			
+			
+			public void actionPerformed(ActionEvent e) {
+				
+				
+				
+			}
+		});
+		buttonGroup_1.add(btnNombreProducto);
+		botonesProductos.add(btnNombreProducto);
+
+		
+		
+	}
 
 	private static void asignarIconoTiposDeComida(JToggleButton btnTipoComida) {
 		// ICONO DE MESA
