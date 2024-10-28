@@ -7,6 +7,7 @@ import java.awt.Frame;
 import javax.swing.JButton;
 import javax.swing.JDialog;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.border.EmptyBorder;
@@ -63,6 +64,27 @@ public class Comanda extends JDialog {
 			buttonPane.setLayout(new FlowLayout(FlowLayout.RIGHT));
 			getContentPane().add(buttonPane, BorderLayout.SOUTH);
 				
+				JButton eliminarButton = new JButton("ELIMINAR");
+				eliminarButton.addActionListener(new ActionListener() {
+					public void actionPerformed(ActionEvent e) {
+						
+						
+						int borrar = getTablaComandas().getSelectedRow();
+						if (borrar >= 0) {
+							
+							modeloTabla.removeRow(borrar);
+							
+//							totalSinIva.setText(Metodos.sumarColumna(tablaMesas, 3) + " €");
+//							totalIva.setText(Metodos.sumarColumna(tablaMesas, 4) + " €");
+						} else {
+							JOptionPane.showMessageDialog(getContentPane(), "ERROR Selecciona una FILA!!!!");
+						}
+						
+					}
+				});
+				eliminarButton.setActionCommand("OK");
+				buttonPane.add(eliminarButton);
+				
 				JButton aniadirButton = new JButton("AÑADIR");
 				
 				aniadirButton.setActionCommand("OK");
@@ -74,7 +96,7 @@ public class Comanda extends JDialog {
 				getRootPane().setDefaultButton(modificarButton);
 			
 			
-				JButton cancelButton = new JButton("Cancel");
+				JButton cancelButton = new JButton("VOLVER");
 				
 				cancelButton.setActionCommand("Cancel");
 				buttonPane.add(cancelButton);

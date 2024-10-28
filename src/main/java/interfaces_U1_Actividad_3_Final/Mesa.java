@@ -198,9 +198,9 @@ public class Mesa extends JFrame {
 	}
 	
 	private void abrirDialogo(DefaultTableModel modeloTabla) {
-		      
+		Comanda dialogoComanda = new Comanda(this, modeloTabla);
         setVisible(false);
-        this.dialogoComanda.setVisible(true);
+        dialogoComanda.setVisible(true);
         getButtonGroupMesas().clearSelection();
     }
 

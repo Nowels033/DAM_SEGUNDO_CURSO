@@ -8,6 +8,7 @@ import javax.swing.JDialog;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.JTable;
 import javax.swing.border.EmptyBorder;
 import javax.swing.table.DefaultTableModel;
 
@@ -40,6 +41,7 @@ public class MenuDeProductos extends JDialog {
 	private CardLayout cardLayout = new CardLayout(0, 0);
 	private JPanel jPanelProductos = new JPanel();
 	private ArrayList<Producto> productosParaMostrar = new ArrayList<Producto>();
+	
 	
 
 	/**
@@ -98,7 +100,10 @@ public class MenuDeProductos extends JDialog {
 			public void actionPerformed(ActionEvent e) {
 				
 				modeloTabla.addRow(productosSeleccionados);
-				
+				productosParaMostrar.clear();
+                botonesProductos.removeAll();
+				getButtonGroupTipoComida().clearSelection();
+				cerrarDialogo();
 				
 				
 				
@@ -169,6 +174,7 @@ public class MenuDeProductos extends JDialog {
 				totalCantidad++;
 				cantidad.setText(totalCantidad + "");
 				getProductosSeleccionados()[2] = cantidad.getText();
+				
 
 			}
 		});
@@ -241,8 +247,6 @@ public class MenuDeProductos extends JDialog {
 	public String[] getTIPOSDEPRODUCTO() {
 		return TIPOSDEPRODUCTO;
 	}
-	
-	
 
 	public JPanel getjPanelProductos() {
 		return jPanelProductos;
@@ -250,6 +254,14 @@ public class MenuDeProductos extends JDialog {
 
 	public void setjPanelProductos(JPanel jPanelProductos) {
 		this.jPanelProductos = jPanelProductos;
+	}
+	
+	public ArrayList<Producto> getProductosParaMostrar() {
+		return productosParaMostrar;
+	}
+
+	public void setProductosParaMostrar(ArrayList<Producto> productosParaMostrar) {
+		this.productosParaMostrar = productosParaMostrar;
 	}
 
 	private void generarBotonesTipoDeProducto(ButtonGroup buttonGroupTipoComida, JPanel botonesTipoComida, ButtonGroup buttonGroupProductos, JPanel botonesProductos, CardLayout cardLayout) {
@@ -289,7 +301,16 @@ public class MenuDeProductos extends JDialog {
 									
 	                        		if (getProductos().get(k).getNombre().equalsIgnoreCase(tglbtnProductos.getText())) {
 										
+	                        			double valor=getProductos().get(k).getPrecio();
+	                        			double cantidad=Double.parseDouble(getCantidad().getText());
+	                        			
+	                        			
 	                        			getProductosSeleccionados()[3]=String.valueOf(getProductos().get(k).getPrecio());
+	                        			
+	                        			
+	                        			
+	                        			getProductosSeleccionados()[4]=String.valueOf(valor*cantidad);
+	                        			
 									}
 	                        		
 								}
@@ -322,47 +343,23 @@ public class MenuDeProductos extends JDialog {
 		getOwner().setVisible(true);
 
 	}
+	private static double sumarColumna(int num,DefaultTableModel modeloTabla) {
+		double suma = 0;
+		JTable tabla = new JTable(modeloTabla);
+		for (int i = 0; i < tabla.getRowCount(); i++) {
 
-//	private void generarBotonesNombresProductos(ArrayList<Producto> arrayDeProductos, ButtonGroup buttonGroup_1,JPanel botonesProductos,CardLayout cardLayout) {
-//
-//		
-//		ArrayList<String> productoSeleccionado = new ArrayList<String>();
-//		for (int i = 0; i < arrayDeProductos.size(); i++) {
-//			
-//			if (arrayDeProductos.get(i).getTipo().equalsIgnoreCase(getProductosSeleccionados()[1])) {
-//				productoSeleccionado.add(arrayDeProductos.get(i).getNombre());
-//			}
-//			
-//			
-//		}
-//		
-//		botonesProductos.removeAll();
-//		
-//		for (int i = 0; i < productoSeleccionado.size(); i++) {
-//			
-//			JButton btnNombreProducto = new JButton(productoSeleccionado.get(i));
-//			btnNombreProducto.addActionListener(new ActionListener() {
-//
-//				public void actionPerformed(ActionEvent e) {
-//						
-//					
-//					productosSeleccionados[0]=btnNombreProducto.getText();
-//					
-//					
-//				}
-//			});
-//			iconosNombreDeProducto(btnNombreProducto,btnNombreProducto.getText());
-//			buttonGroup_1.add(btnNombreProducto);
-//			botonesProductos.add(btnNombreProducto);
-//			
-//		}
-//		
-//		
-//
-//	}
-	
+			double valor = Double.parseDouble((String) tabla.getValueAt(i, num));
+
+			suma += valor;
+
+		}
+
+		suma = Math.round(suma * 100.0) / 100.0;
+
+		return suma;
+	}
 	private void generarBotonesNombresProductos(ArrayList<Producto> arrayDeProductos, ButtonGroup buttonGroupProductos, JPanel botonesProductos, CardLayout cardLayout, JPanel contenedorPrincipal) {
-	    // Limpiamos el JPanel de botones antes de agregar los nuevos
+	   
 	    botonesProductos.removeAll();
 
 	    String tipoSeleccionado = getProductosSeleccionados()[1];
@@ -372,19 +369,16 @@ public class MenuDeProductos extends JDialog {
 	            JButton btnNombreProducto = new JButton(producto.getNombre());
 	            btnNombreProducto.addActionListener(e -> productosSeleccionados[0] = btnNombreProducto.getText());
 
-	            // Asignamos icono correspondiente al botón
-	           // iconosNombreDeProducto(btnNombreProducto, producto.getNombre());
+	         
 	            buttonGroupProductos.add(btnNombreProducto);
 	            botonesProductos.add(btnNombreProducto);
 	        }
 	    }
 
-	    // Aseguramos que se actualice el panel de botones
 	    botonesProductos.revalidate();
 	    botonesProductos.repaint();
 
-	    // Actualizamos el CardLayout para asegurarnos de que el panel se muestre
-	    cardLayout.show(contenedorPrincipal, "productos"); // reemplaza "nombrePanelProductos" con el nombre de tu panel en el CardLayout
+	    cardLayout.show(contenedorPrincipal, "productos");
 	}
 
 	private static void asignarIconoTiposDeComida(JToggleButton btnTipoComida) {
