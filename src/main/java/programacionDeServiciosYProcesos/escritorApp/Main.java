@@ -18,7 +18,7 @@ public class Main {
 //            Thread escritor = arrayEscritore;
 //
 //        }
-        Thread [] arrayEscritoresTotal = new Thread[7000];
+        Thread [] arrayEscritoresTotal = new Thread[70];
 
         for (int i = 0; i < arrayEscritoresTotal.length; i++) {
             arrayEscritoresTotal[i] = new Thread(new Escritor("Escritor "+i));
