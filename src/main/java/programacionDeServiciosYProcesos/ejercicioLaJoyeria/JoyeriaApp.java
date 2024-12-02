@@ -15,17 +15,16 @@ public class JoyeriaApp {
 
 
 
-        // Crear 5 empleados
+    
         for (int i = 0; i < numeroEmpleados; i++) {
             empleados.add(new Empleado(cesto));
         }
 
-        // Iniciar los hilos
         for (Empleado empleado : empleados) {
             empleado.start();
         }
 
-        // Esperar a que todos los empleados terminen
+       
         for (Empleado empleado : empleados) {
             try {
                 empleado.join();
@@ -34,7 +33,6 @@ public class JoyeriaApp {
             }
         }
 
-        // Contar collares fabricados
         int totalCollares = 0;
         for (Empleado empleado : empleados) {
             System.out.println("Empleado : "+empleado.getNombre()+", fabrico : "+empleado.getCollaresFabricados()+" collares");

@@ -1,7 +1,7 @@
 package programacionDeServiciosYProcesos.ejercicioLaJoyeria;
 
 public class Cesto {
-    public static int perlasBlancas = 209; // constantes
+    public static int perlasBlancas = 180; 
     public static int perlasAzules = 210;
 
     public synchronized Perla cogerPerla(String color) throws NoMaterialsLeft {

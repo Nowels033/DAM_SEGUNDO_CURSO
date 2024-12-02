@@ -5,6 +5,7 @@ public class Empleado extends Thread {
     private int nombre = numEmpleados;
     private Cesto cesto;
     private int collaresFabricados;
+    private final int NUMERO = 20;
 
     public Empleado(Cesto cesto) {
         this.nombre = numEmpleados++;
@@ -17,7 +18,7 @@ public class Empleado extends Thread {
         try {
             while (true) {
                 Collar collar = new Collar();
-                for (int i = 0; i < 20; i++) {
+                for (int i = 0; i < NUMERO; i++) {
                     String color = (i % 2 == 0) ? "blanca" : "azul";
                     cesto.cogerPerla(color);
                     collar.insertarPerla();

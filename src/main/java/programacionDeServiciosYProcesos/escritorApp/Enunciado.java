@@ -1,4 +1,4 @@
-package programacionDeServiciosYProcesos.ejercicioLaJoyeria;
+package programacionDeServiciosYProcesos.escritorApp;
 
 public class Enunciado {
 
