@@ -28,6 +28,13 @@ public class Empleado extends Thread {
         } catch (NoMaterialsLeft e) {
             System.out.println(e.getMessage());
         }
+        
+        try {
+			Thread.sleep(500);
+		} catch (InterruptedException e) {
+			
+			e.printStackTrace();
+		}
     }
 
     public int getCollaresFabricados() {

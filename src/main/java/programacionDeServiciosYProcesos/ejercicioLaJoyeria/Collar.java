@@ -5,6 +5,10 @@ public class Collar {
 
     public void insertarPerla() {
         perlasInsertadas++;
+        
+//        if(perlasInsertadas==20) {
+//        	
+//        }
     }
 
     public boolean isComplete() {
