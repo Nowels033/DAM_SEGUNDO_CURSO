@@ -1,0 +1,77 @@
+Guía de estudio para el examen de PSP - 2º DAM
+
+
+---
+
+1. Procesos e Hilos en Java
+
+Hilos con synchronized
+
+Se usa para evitar condiciones de carrera cuando varios hilos acceden a un mismo recurso compartido.
+
+Ejemplo práctico en el código: La clase CuentaBancaria usa synchronized para controlar el acceso al método retirar().
+
+
+Método wait() y notify()
+
+wait(): Pone en espera un hilo cuando el saldo es insuficiente.
+
+notifyAll(): Despierta a los hilos en espera cuando se deposita dinero.
+
+
+Ejemplo en examen:
+
+Implementa un sistema bancario con múltiples clientes retirando dinero y un proceso depositando dinero, manejando sincronización con wait() y notifyAll().
+
+
+
+---
+
+2. Conexión a Internet en Java
+
+Uso de HttpURLConnection
+
+Permite hacer peticiones a una URL y obtener su contenido.
+
+En el código se usa para acceder a una página web y leer su contenido HTML.
+
+Método getResponseCode() para validar si la respuesta fue exitosa (código 200).
+
+
+Ejemplo en examen:
+
+Realiza una conexión HTTP a una URL e imprime el contenido de la página.
+
+
+
+---
+
+3. Conceptos Clave para el Examen
+
+Sincronización de Hilos
+
+synchronized, wait(), notify(), notifyAll().
+
+
+Comunicación en Red
+
+HttpURLConnection, BufferedReader, InputStreamReader.
+
+
+Ejercicios típicos de examen
+
+1. Implementa una cuenta bancaria con múltiples clientes accediendo de forma segura.
+
+
+2. Realiza una solicitud HTTP para obtener contenido de una página web.
+
+
+3. Controla el acceso concurrente a un recurso compartido.
+
+
+
+
+---
+
+Estudia estos conceptos y practica con los ejercicios para garantizar un buen resultado en el examen.
+
